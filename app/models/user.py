@@ -23,6 +23,10 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
+    #Relationship Attribute
+    posts = db.relationship('Post', backref='user', lazy=True, cascade="all, delete-orphan")
+    likes = db.relationship('Like', backref='user', lazy=True, cascade="all, delete-orphan")
+
     @property
     def password(self):
         return self.hashed_password

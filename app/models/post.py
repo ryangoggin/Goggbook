@@ -1,6 +1,4 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from datetime import datetime
-
 
 
 class Post(db.Model):
@@ -17,7 +15,7 @@ class Post(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
     #Relationship Attribute
-    comments = db.relationship('Like', backref='post', lazy=True, cascade="all, delete-orphan")
+    comments = db.relationship('Comment', backref='post', lazy=True, cascade="all, delete-orphan")
     likes = db.relationship('Like', backref='post', lazy=True, cascade="all, delete-orphan")
 
     def to_dict(self):
