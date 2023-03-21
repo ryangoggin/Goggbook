@@ -1,20 +1,87 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
+from datetime import date
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    users = [
+    User(
+        username='Demo-Lition',
+        first_name="Demo",
+        last_name="Lition",
+        email='demo@aa.io',
+        password='password',
+        birthdate=date(1990,1,1),
+        bio="Demo fella that loves Goggbook",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+    ),
+    User(
+        username='Marnie',
+        first_name="Marnie",
+        last_name="Smith",
+        email='marnie@aa.io',
+        password='password',
+        birthdate=date(1991,5,15),
+        bio="My name is Marnie and I love coding",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+    ),
+    User(
+        username='Bobbie',
+        first_name="Bobbie",
+        last_name="Johnson",
+        email='bobbie@aa.io',
+        password='password',
+        birthdate=date(1992,12,4),
+        bio="I'm Bobbie and this is my bio",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+    ),
+    User(
+        username='akim',
+        first_name="Aileen",
+        last_name="Kim",
+        email='aileenkim@gmail.com',
+        password='password1',
+        birthdate=date(1998,2,21),
+        bio="a/A '23",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+    ),
+    User(
+        username='zmarediya',
+        first_name="Zaineb",
+        last_name="Marediya",
+        email='zainebmarediya@gmail.com',
+        password='password2',
+        birthdate=date(1998,4,14),
+        bio="a/A '23",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+    ),
+    User(
+        username='rgoggin',
+        first_name="Ryan",
+        last_name="Goggin",
+        email='ryangoggin@gmail.com',
+        password='password3',
+        birthdate=date(1998,6,26),
+        bio="Brown '20, a/A '23",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+    ),
+    User(
+        username='kleong',
+        first_name="Ken",
+        last_name="Leong",
+        email='kenleong@gmail.com',
+        password='password4',
+        birthdate=date(1998,10,5),
+        bio="a/A '23",
+        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+    )
+    ]
+
+    db.session.add_all(users)
     db.session.commit()
+    return users
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -28,5 +95,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()
