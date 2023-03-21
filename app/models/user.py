@@ -19,7 +19,6 @@ class User(db.Model, UserMixin):
     birthdate = db.Column(db.DateTime, nullable=False)
     bio = db.Column(db.String(150), nullable=False)
     profile_pic = db.Column(db.String(255), nullable=False)
-    cover_pic = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
