@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Klavika Bold';
+    src: url('../../static/klavika-bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Medium';
+    src: url('../../static/klavika-medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Light';
+    src: url('../../static/klavika-light.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.logged-out-homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logged-out-homepage-top {
+    display: flex;
+    width: 980px;
+    padding-top: 20vh;
+    margin: 0;
+}
+
+.logged-out-homepage-top-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 80px;
+}
+
+.app-name {
+    font-family: 'Klavika Medium';
+    font-size: 48px;
+    color: #1877f2;
+    margin: 0;
+}
+
+.app-motto {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    padding-right: 100px;
+}
+
+.logged-out-homepage-top-right {
+    padding-right: 80px;
+}

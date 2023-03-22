@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'Klavika Bold';
+    src: url('../../static/klavika-bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Medium';
+    src: url('../../static/klavika-medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Light';
+    src: url('../../static/klavika-light.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+    width: 400px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: #c5c6c9 5px 5px 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-error {
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkslategrey;
+}
+
+.login-email {
+    display: flex;
+    justify-content: center;
+    width: 364px;
+    height: 51px;
+    padding: 6px 0px 6px;
+    margin-top: 5px;
+
+}
+
+.login-email input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    width: 300px;
+    height: 22px;
+    padding: 14px 16px 14px;
+    border: 0.67px solid #e3e5e8;
+    border-radius: 5px;
+}
+
+.login-email input:focus {
+    border: none;
+    outline: none;
+}
+
+.login-password {
+    display: flex;
+    justify-content: center;
+    width: 364px;
+    height: 51px;
+    padding: 6px 0px 6px;
+}
+
+.login-password input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    width: 300px;
+    height: 22px;
+    padding: 14px 16px 14px;
+    border: 0.67px solid #e3e5e8;
+    border-radius: 5px;
+}
+
+.login-password input:focus {
+    border: none;
+    outline: none;
+}
+
+.login-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: solid 1px #e3e5e8;
+}
+
+.login-button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color:white;
+    background-color: #1877f2;
+    width: 332px;
+    height: 48px;
+    padding: 0px 16px 0px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    cursor: pointer;
+}
+
+.signup-button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #42b72a;
+    width: 190px;
+    height: 48px;
+    padding: 0px 16px 0px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.signup-button:hover {
+    cursor: pointer;
+    background-color: #369b22;
+}
