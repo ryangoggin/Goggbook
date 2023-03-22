@@ -116,7 +116,7 @@ def create_new_post():
 @login_required
 def edit_post(id):
     '''
-    create a new post and return it as a dictionary if successful
+    query a post, update it if it exists, and return it as a dictionary if successful
     '''
     post = Post.query.get(id)
 
@@ -166,3 +166,20 @@ def edit_post(id):
 
 
 # delete a post
+@post_routes.route("/<int:id>", methods=['DELETE'])
+@login_required
+def delete_post(id):
+    '''
+    query a post, update it if it exists, and return it as a dictionary if successful
+    '''
+    post = Post.query.get(id)
+
+    if post is None:
+        return jsonify({'error': 'Post not found'}), 404
+
+    if post.user_id != current_user.id:
+         return jsonify({'error': 'Cannot delete posts that are not your\'s'}), 403
+
+    db.session.delete(post)
+    db.session.commit()
+    return {"message": f"Successfully deleted post #{post.id}"}
