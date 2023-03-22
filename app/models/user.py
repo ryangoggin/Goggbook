@@ -47,7 +47,6 @@ class User(db.Model, UserMixin):
             'birthdate': self.birthdate,
             'bio': self.bio,
             'profilePic': self.profile_pic,
-            'coverPic': self.cover_pic,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
         }
