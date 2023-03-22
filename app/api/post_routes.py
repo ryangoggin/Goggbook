@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from flask_login import login_required
-from app.models import db, Post
+from flask_login import login_required, current_user
+from app.models import db, Post, User, Friend
 from app.api.aws_helpers import upload_file_to_s3, get_unique_filename
 from ..forms.post_form import PostForm
 from datetime import date
@@ -8,27 +8,52 @@ from datetime import date
 post_routes = Blueprint('posts', __name__)
 
 
+# get all posts
 @post_routes.route("")
 @login_required
 def get_all_posts():
     '''
     queries all posts on GET requests
     '''
-    # Query for all posts
     posts = Post.query.order_by(Post.created_at.desc()).all()
-    # sorted_posts = sorted(seed_posts, key=lambda post: post['date'], reverse=True)
     response = [post.to_dict() for post in posts]
 
     return {'posts': response }
 
 
+# get all posts by current user and current user's friends for the feed
+@post_routes.route("/feed")
+@login_required
+def get_all_feed_posts():
+    '''
+    queries posts by you and your friends on GET requests
+    '''
+    friends = Friend.query.filter(Friend.user_id == current_user.id)
+    feedUsersLst = []
+    for friend in friends:
+        feedUsersLst.append(friend.friend_id)
+    feedUsersLst.append(current_user.id)
+
+    # return {
+    #     'friends': [friend.to_dict() for friend in friends],
+    #     'currUser': current_user.to_dict()
+    #     }
+
+
+    # .order_by(Post.created_at.desc())
+    posts = Post.query.filter(Post.user_id.in_(feedUsersLst)).order_by(Post.created_at.desc()).all()
+    response = [post.to_dict() for post in posts]
+
+    return {'posts': response }
+
+
+# get post by id
 @post_routes.route("/<int:id>")
 @login_required
 def get_post_by_id(id):
     '''
     queries a single post by id on GET requests
     '''
-    # Query
     post=Post.query.get(id)
 
     if post is None:
