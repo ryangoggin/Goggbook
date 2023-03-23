@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -10,6 +12,22 @@ function LoginFormPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
+  const ulRef = useRef();
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -32,9 +50,11 @@ function LoginFormPage() {
 			)
 	};
 
+  const closeMenu = () => setShowMenu(false);
+
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <p className={errors.length > 0 ? "login-error" : "hidden"}>
           Invalid Credentials
         </p>
@@ -60,7 +80,12 @@ function LoginFormPage() {
           <button className="login-button" type="submit">Log In</button>
           <button className="login-button" onClick={loginDemo}>Log In Demo</button>
         </div>
-        <button className="signup-button">Create new account</button>
+        <OpenModalButton
+          className="signup-button"
+          buttonText="Create new account"
+          onItemClick={closeMenu}
+          modalComponent={<SignupFormModal />}
+        />
       </form>
     </>
   );

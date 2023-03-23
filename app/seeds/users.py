@@ -15,7 +15,7 @@ def seed_users():
         password='password',
         birthdate=date(1990,1,1),
         bio="Demo fella that loves Goggbook",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/Demo-prof-pic.jpg',
     ),
     User(
         username='Marnie',
@@ -25,7 +25,7 @@ def seed_users():
         password='password',
         birthdate=date(1991,5,15),
         bio="My name is Marnie and I love coding",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/M-prof-pic.png',
     ),
     User(
         username='Bobbie',
@@ -35,7 +35,7 @@ def seed_users():
         password='password',
         birthdate=date(1992,12,4),
         bio="I'm Bobbie and this is my bio",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/B-prof-pic.png',
     ),
     User(
         username='akim',
@@ -45,7 +45,7 @@ def seed_users():
         password='password1',
         birthdate=date(1998,2,21),
         bio="a/A '23",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg',
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/A-prof-pic.png',
     ),
     User(
         username='zmarediya',
@@ -55,7 +55,7 @@ def seed_users():
         password='password2',
         birthdate=date(1998,4,14),
         bio="a/A '23",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/Z-prof-pic.png'
     ),
     User(
         username='rgoggin',
@@ -65,7 +65,7 @@ def seed_users():
         password='password3',
         birthdate=date(1998,6,26),
         bio="Brown '20, a/A '23",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/R-prof-pic.png'
     ),
     User(
         username='kleong',
@@ -75,7 +75,7 @@ def seed_users():
         password='password4',
         birthdate=date(1998,10,5),
         bio="a/A '23",
-        profile_pic='https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+        profile_pic='https://goggbook-aws.s3.amazonaws.com/K-prof-pic.png'
     )
     ]
 

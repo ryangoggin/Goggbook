@@ -1,0 +1,25 @@
+.signup, .quick-and-easy {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.quick-and-easy {
+    padding: 5px 0px 10px;
+    border-bottom: solid 1px;
+}
+
+.signup-container {
+    height: 534px;
+    width: 400px;
+}
+
+.signup-top {
+    padding: 16px 10px 16px 10px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
