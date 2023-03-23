@@ -40,13 +40,13 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className="profile-button" onClick={openMenu}>
-        <img className="user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile Picture`}/>
+        <img className="user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile`}/>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <li>
-            <img className="small-user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile Picture`}/>
+            <img className="small-user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile`}/>
               {user.firstName} {user.lastName}
               </li>
             <li>

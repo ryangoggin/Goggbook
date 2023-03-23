@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PostItem from "../PostItem";
 import { getFeed } from "../../store/post";
+import { getFriends } from "../../store/friend";
 import "./Feed.css";
 
 function Feed() {
@@ -15,6 +16,7 @@ function Feed() {
     //trying to remove allMessages from dependency array (ADD BACK IN IF NEEDED)
     useEffect(() => {
         dispatch(getFeed());
+        dispatch(getFriends());
     }, [dispatch]);
 
     const handleLiveVideo = (e) => {
@@ -28,16 +30,12 @@ function Feed() {
     }
 
     let feedPostsArr = [];
-    // memoize the array of feed posts to prevent unnecessary re-renders
-    // const feedPostsArr = useMemo(() => {
-        if (!feedPosts) {
-            return null;
-        } else {
-            feedPostsArr = Object.values(feedPosts);
-        }
 
-    //     return [];
-    // }, [feedPosts]);
+    if (!feedPosts) {
+        return null;
+    } else {
+        feedPostsArr = Object.values(feedPosts);
+    }
 
     return (
         <div className='feed-container'>
