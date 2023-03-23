@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import LoginFormPage from '../LoginFormPage';
+import Feed from '../Feed';
 import "./Homepage.css";
+import Navigation from '../Navigation';
 
 const Homepage = () => {
     const user = useSelector(state => state.session.user)
@@ -10,6 +12,8 @@ const Homepage = () => {
         <>
         {user ? (
             <>
+                <Navigation />
+                <Feed />
             </>
           ) : (
             <div className='logged-out-homepage-container'>
