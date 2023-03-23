@@ -39,16 +39,21 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="profile-button" onClick={openMenu}>
+        <img className="user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile Picture`}/>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+            <img className="small-user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile Picture`}/>
+              {user.firstName} {user.lastName}
+              </li>
+            <li>
+
+            </li>
+            <li>
+              <button className="logout-button" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
