@@ -55,6 +55,7 @@
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   position: absolute;
+  z-index: 2;
   top: 56px;
   right: 20px;
   padding: 10px;

@@ -12,6 +12,8 @@ function PostItem({ post }) {
 
     const postUser = friendUsers[post.userId];
 
+    if (!postUser) return null;
+
     return (
         <div className='post-item'>
             <div className='post-top'>
