@@ -125,42 +125,21 @@ def edit_post(id):
     if post.user_id != current_user.id:
          return jsonify({'error': 'Cannot edit posts that are not your\'s'}), 403
 
-    res = request.get_json()
-
     form = PostForm()
     form['csrf_token'].data = request.cookies["csrf_token"]
 
     errors = {}
 
-    if len(res["content"]) > 2000:
+    if len(form.data["content"]) > 2000:
             errors["content"] = "Messages must be less than 2000 characters"
             return jsonify({"errors": errors}), 400
 
     if form.validate_on_submit():
-
-        # # post with a post_pic
-        # if form.data['post_pic']:
-        #     image = form.data['post_pic']
-
-        #     image.filename = get_unique_filename(image.filename)
-
-        #     upload = upload_file_to_s3(image)
-
-        #     if "url" not in upload:
-        #         return jsonify("error uploading image"), 400
-
-            # content=res["content"]
-            # post_pic=upload["url"]
-            # updated_at=date.today()
-
-        #     db.session.commit()
-        #     return {'resPost': post.to_dict()}
-        # post without a post_pic
-        post.content=res["content"]
-        post.updated_at=date.today()
+        post.content=form.data["content"] or post.content
+        post.updated_at=datetime.utcnow()
 
         db.session.commit()
-        return {'resPost': post.to_dict()}
+        return post.to_dict()
     return jsonify({"errors": form.errors}), 400
 
 
