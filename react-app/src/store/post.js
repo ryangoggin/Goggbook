@@ -3,6 +3,7 @@ const LOAD_POSTS = 'posts/LOAD_POSTS';
 const ADD_POST = 'posts/ADD_POST';
 const EDIT_POST = 'posts/EDIT_POST';
 const REMOVE_POST = 'posts/REMOVE_POST';
+const ADD_COMMENT = 'posts/ADD_COMMENT';
 
 // POJO action creators:
 const loadPosts = posts => ({
@@ -16,13 +17,18 @@ const addPost = post => ({
 });
 
 const editPost = post => ({
-  type: EDIT_POST,
-  post
+    type: EDIT_POST,
+    post
 });
 
 const removePost = id => ({
-  type: REMOVE_POST,
-  id
+    type: REMOVE_POST,
+    id
+});
+
+const addComment = comment => ({
+    type: ADD_COMMENT,
+    comment
 });
 
 
@@ -77,6 +83,20 @@ export const deletePost = (id) => async (dispatch) => {
   }
 }
 
+export const createComment = (id, comment) => async (dispatch) => {
+  const resComment = await fetch(`api/posts/${id}/comment`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(comment),
+  });
+
+  if (resComment.ok) {
+    const comment = await resComment.json();
+    dispatch(addComment(comment));
+    return comment;
+  }
+}
+
 // initial state for reducer:
 const initialState = {};
 
@@ -101,6 +121,10 @@ const postReducer = (state = initialState, action) => {
       case REMOVE_POST:
         newState = { ...state };
         delete newState[action.id];
+        return newState;
+      case ADD_COMMENT:
+        newState = { ...state };
+        newState[action.comment.postId].comments.push(action.comment);
         return newState;
       default:
         return state;

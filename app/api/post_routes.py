@@ -1,8 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import db, Post, User, Friend
+from app.models import db, Post, User, Friend, Comment
 from app.api.aws_helpers import upload_file_to_s3, get_unique_filename
-from ..forms.post_form import PostForm
+from ..forms import PostForm, CommentForm
 from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
@@ -161,3 +161,34 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
     return {"message": f"Successfully deleted post #{post.id}"}
+
+
+# create a new comment
+@post_routes.route("/<int:id>/comment", methods=['POST'])
+@login_required
+def create_new_comment(id):
+    '''
+    create a new comment and return it as a dictionary if successful
+    '''
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies["csrf_token"]
+
+    errors = {}
+
+    if len(form.data["content"]) > 2000:
+            errors["content"] = "Comment content must be less than 2000 characters"
+            return jsonify({"errors": errors}), 400
+
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id=form.data["user_id"],
+            post_id=id,
+            content=form.data["content"],
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict()
+    return jsonify({"errors": form.errors}), 400

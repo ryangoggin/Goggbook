@@ -4,6 +4,7 @@ import OpenModalButton from "../OpenModalButton";
 import EditPostModal from '../EditPostModal';
 import DeletePostModal from '../DeletePostModal';
 import CommentItem from '../CommentItem';
+import CommentForm from '../CommentForm';
 import './PostItem.css'
 
 
@@ -40,6 +41,11 @@ function PostItem({ post }) {
 
     const commentsArr = post.comments;
     const likesArr = post.likes;
+
+    // sort comments by post date
+    commentsArr.sort(function(a,b){
+        return new Date(b.updatedAt) - new Date(a.updatedAt);
+    });
 
     return (
         <div className='post-item'>
@@ -83,14 +89,15 @@ function PostItem({ post }) {
                 <div className='like-and-comment-counter-container'>
                     <div className='like-counter'>
                         <i className="fa-regular fa-thumbs-up"></i>
-                        <p>{likesArr.length}</p>
+                        <p className='like-count'>{likesArr.length}</p>
                     </div>
                     <div className='comment-counter'>
-                        <p>{commentsArr.length}</p>
+                        <p className='comment-count'>{commentsArr.length}</p>
                         <i className="fa-regular fa-comment"></i>
                     </div>
                 </div>
                 <div className='comments-container'>
+                    <CommentForm post={post}/>
                     {commentsArr.map((comment) => {
                         return (
                             <div key={`comment${comment.id}`} className='comment-item-container'>
