@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Post, User, Friend
 from app.api.aws_helpers import upload_file_to_s3, get_unique_filename
 from ..forms.post_form import PostForm
-from datetime import date
+from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
@@ -34,7 +34,8 @@ def get_all_feed_posts():
         feedUsersLst.append(friend.friend_id)
     feedUsersLst.append(current_user.id)
 
-    posts = Post.query.filter(Post.user_id.in_(feedUsersLst)).order_by(Post.created_at.desc()).all()
+    posts = Post.query.filter(Post.user_id.in_(feedUsersLst)).all()
+
     response = [post.to_dict() for post in posts]
 
     return {'posts': response }
@@ -62,19 +63,16 @@ def create_new_post():
     '''
     create a new post and return it as a dictionary if successful
     '''
-    res = request.get_json()
-
     form = PostForm()
     form['csrf_token'].data = request.cookies["csrf_token"]
 
     errors = {}
 
-    if len(res["content"]) > 2000:
-            errors["content"] = "Messages must be less than 2000 characters"
+    if len(form.data["content"]) > 2000:
+            errors["content"] = "Post content must be less than 2000 characters"
             return jsonify({"errors": errors}), 400
 
     if form.validate_on_submit():
-
         # post with a post_pic
         if form.data['post_pic']:
             image = form.data['post_pic']
@@ -84,30 +82,31 @@ def create_new_post():
             upload = upload_file_to_s3(image)
 
             if "url" not in upload:
-                return jsonify("error uploading image"), 400
+                errors["image"] = "Error uploading image"
+                return jsonify({"errors": errors}), 400
 
             new_post = Post(
-                user_id=res["userId"],
-                content=res["content"],
+                user_id=form.data["user_id"],
+                content=form.data["content"],
                 post_pic=upload["url"],
-                created_at=date.today(),
-                updated_at=date.today()
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow()
             )
 
             db.session.add(new_post)
             db.session.commit()
-            return {'resPost': new_post.to_dict()}
+            return new_post.to_dict()
         # post without a post_pic
         new_post = Post(
-            user_id=res["userId"],
-            content=res["content"],
-            created_at=date.today(),
-            updated_at=date.today()
+            user_id=form.data["user_id"],
+            content=form.data["content"],
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
         )
 
         db.session.add(new_post)
         db.session.commit()
-        return {'resPost': new_post.to_dict()}
+        return new_post.to_dict()
     return jsonify({"errors": form.errors}), 400
 
 

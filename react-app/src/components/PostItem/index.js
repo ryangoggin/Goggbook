@@ -5,12 +5,14 @@ import './PostItem.css';
 
 function PostItem({ post }) {
     // select data from the Redux store
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     const friendUsers = useSelector(state => state.friends);
 
     if (!friendUsers) return null;
 
     const postUser = friendUsers[post.userId];
+
+    if (!postUser) return null;
 
     return (
         <div className='post-item'>
