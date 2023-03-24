@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import OpenModalButton from "../OpenModalButton";
 import EditPostModal from '../EditPostModal';
 import DeletePostModal from '../DeletePostModal';
+import CommentItem from '../CommentItem';
 import './PostItem.css'
 
 
@@ -71,8 +72,8 @@ function PostItem({ post }) {
                         }
                     </div>
                 </div>
-                <div className="post-content">
-                    <p>{post.content}</p>
+                <div className="post-content-container">
+                    <p className='post-content'>{post.content}</p>
                     {post.postPic &&
                         <img className='post-pic' src={`${post.postPic}`} alt={` Post #${post.id} Pic`}/>
                     }
@@ -88,6 +89,15 @@ function PostItem({ post }) {
                         <p>{commentsArr.length}</p>
                         <i className="fa-regular fa-comment"></i>
                     </div>
+                </div>
+                <div className='comments-container'>
+                    {commentsArr.map((comment) => {
+                        return (
+                            <div key={`comment${comment.id}`} className='comment-item-container'>
+                                <CommentItem comment={comment} />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

@@ -1,0 +1,37 @@
+.comment-item {
+    margin-bottom: 5px;
+}
+
+.comment-left {
+    display: flex;
+}
+
+.comment-profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.comment-content-container {
+    background-color: #3a3b3c;
+    padding: 8px 12px 8px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.comment-fullname {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+}
+
+.comment-content {
+    font-size: 15px;
+    margin: 0;
+}
+
+.comment-updated-at {
+    font-size: 12px;
+    margin: 0;
+}

@@ -50,14 +50,27 @@
     display: none;  /* Safari and Chrome */
 }
 
-/* .feed-right {
+#feed-right {
     background-color: #18191a;
     position: fixed;
+    z-index: 0;
     top: 56px;
     right: 0;
     width: 280px;
     height: 100vh;
-} */
+}
+
+.create-post-container {
+    background-color: #242526;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    box-sizing: border-box;
+    padding: 12px 16px 10px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+}
 
 .post-item-container {
     background-color: #242526;
