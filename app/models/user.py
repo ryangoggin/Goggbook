@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
 
     #Relationship Attribute
     posts = db.relationship('Post', backref='user', lazy=True, cascade="all, delete-orphan")
+    comments = db.relationship('Comment', backref='user', lazy=True, cascade="all, delete-orphan")
     likes = db.relationship('Like', backref='user', lazy=True, cascade="all, delete-orphan")
 
     @property
@@ -48,5 +49,8 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'profilePic': self.profile_pic,
             'createdAt': self.created_at,
-            'updatedAt': self.updated_at
+            'updatedAt': self.updated_at,
+            'posts': [post.to_dict() for post in self.posts],
+            'comments': [comment.to_dict() for comment in self.comments],
+            'likes': [like.to_dict() for like in self.likes]
         }
