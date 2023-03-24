@@ -68,6 +68,7 @@ function Feed() {
             <div className="feed-center">
                 <div className="create-post-container">
                     <div className="create-post-top">
+                    <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
                         <OpenModalButton
                             className="post-button"
                             buttonText={`What's on your mind, ${sessionUser.firstName}?`}
@@ -94,7 +95,7 @@ function Feed() {
                     );
                 })}
             </div>
-            <div className="feed-right">
+            <div id="feed-right">
                 <p>Right placeholder</p>
             </div>
         </div>
