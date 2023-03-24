@@ -23,3 +23,29 @@
     height: 500px;
     object-fit: cover;
 }
+
+.like-and-comment-counter-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #38393b;
+}
+
+.fa-thumbs-up {
+    margin-right: 5px;
+}
+
+.like-counter {
+    color: #a3a6ab;
+    display: flex;
+    align-items: center;
+}
+
+.fa-comment {
+    margin-left: 5px;
+}
+
+.comment-counter {
+    color: #a3a6ab;
+    display: flex;
+    align-items: center;
+}

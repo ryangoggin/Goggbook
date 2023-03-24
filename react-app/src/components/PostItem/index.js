@@ -37,6 +37,9 @@ function PostItem({ post }) {
 
     if (!postUser) return null;
 
+    const commentsArr = post.comments;
+    const likesArr = post.likes;
+
     return (
         <div className='post-item'>
             <div className='post-upper-half'>
@@ -76,7 +79,16 @@ function PostItem({ post }) {
                 </div>
             </div>
             <div className='post-lower-half'>
-
+                <div className='like-and-comment-counter-container'>
+                    <div className='like-counter'>
+                        <i className="fa-regular fa-thumbs-up"></i>
+                        <p>{likesArr.length}</p>
+                    </div>
+                    <div className='comment-counter'>
+                        <p>{commentsArr.length}</p>
+                        <i className="fa-regular fa-comment"></i>
+                    </div>
+                </div>
             </div>
         </div>
     );

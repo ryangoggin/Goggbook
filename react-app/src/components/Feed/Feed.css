@@ -60,5 +60,15 @@
 } */
 
 .post-item-container {
+    background-color: #242526;
     width: 500px;
+    box-sizing: border-box;
+    padding: 12px 16px 10px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+}
+
+.post-pic {
+    position: relative;
+    right: 16px;
 }
