@@ -167,7 +167,7 @@ const postReducer = (state = initialState, action) => {
         newState = { ...state };
         newState[action.comment.postId].comments.forEach(comment => comment.id === action.comment.id ?
           (Object.assign(comment, action.comment)) : null);
-        break
+        return newState;
       case REMOVE_COMMENT:
         newState = { ...state };
         let newCommentArr = newState[action.comment.postId].comments.filter(comment => comment.id !== action.comment.id);
