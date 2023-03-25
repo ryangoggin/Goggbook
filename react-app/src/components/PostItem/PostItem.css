@@ -30,6 +30,22 @@
     margin: 0;
 }
 
+.edit-button, .delete-button {
+    font-size: 16px;
+    color: white;
+    background: none;
+
+    padding: 5px 10px 5px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    outline: none;
+    border-radius: 20px;
+}
+
+.edit-button:hover, .delete-button:hover {
+    cursor: pointer;
+    background-color: #38393b;
+}
+
 .post-content {
     padding: 16px;
     margin: 0;
@@ -46,6 +62,7 @@
     justify-content: space-between;
     padding-bottom: 5px;
     border-bottom: 1px solid #38393b;
+    margin-top: 5px;
     margin-bottom: 8px;
 }
 
