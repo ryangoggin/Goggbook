@@ -35,5 +35,7 @@
 
 .comment-updated-at {
     font-size: 12px;
+    padding-top: 3px;
+    padding-left: 20px;
     margin: 0;
 }

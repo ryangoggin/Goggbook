@@ -47,6 +47,30 @@ function PostItem({ post }) {
         return new Date(b.updatedAt) - new Date(a.updatedAt);
     });
 
+    // helper to make updateAt a time since
+    function convertUpdatedAt(updatedAt) {
+        const updatedAtDate = new Date(updatedAt);
+        const now = new Date();
+        const timeDiffMs = now.getTime() - updatedAtDate.getTime();
+
+        // Convert time difference from milliseconds to minutes, hours, days, and years
+        const timeDiffMin = Math.floor(timeDiffMs / 60000);
+        const timeDiffHr = Math.floor(timeDiffMin / 60);
+        const timeDiffDay = Math.floor(timeDiffHr / 24);
+        const timeDiffYr = Math.floor(timeDiffHr / 365);
+
+        // Return formatted time string
+        if (timeDiffYr > 0) {
+            return `${timeDiffYr}y`;
+        } else if (timeDiffDay > 0) {
+            return `${timeDiffDay}d`;
+        } else if (timeDiffHr > 0) {
+            return `${timeDiffHr}h`;
+        } else {
+            return `${timeDiffMin}m`;
+        }
+    }
+
     return (
         <div className='post-item'>
             <div className='post-upper-half'>
@@ -55,7 +79,7 @@ function PostItem({ post }) {
                         <img className='post-profile-pic' src={`${postUser.profilePic}`} alt={`${postUser.firstName} ${postUser.lastName} Profile`} />
                         <div className='post-author'>
                             <p className='post-fullname'>{postUser.firstName} {postUser.lastName}</p>
-                            <p className='post-updated-at'>{post.updatedAt}</p>
+                            <p className='post-updated-at'>{convertUpdatedAt(post.updatedAt)}</p>
                         </div>
                     </div>
                     <div className='post-top-right'>
@@ -64,13 +88,13 @@ function PostItem({ post }) {
 
                                 <OpenModalButton
                                     className="edit-button"
-                                    buttonText='Edit'
+                                    buttonText={<i className="fa-solid fa-pencil"></i>}
                                     onItemClick={closeMenu}
                                     modalComponent={<EditPostModal post={post} />}
                                 />
                                 <OpenModalButton
                                     className="delete-button"
-                                    buttonText='Delete'
+                                    buttonText={<i className="fa-regular fa-trash-can"></i>}
                                     onItemClick={closeMenu}
                                     modalComponent={<DeletePostModal post={post} />}
                                 />

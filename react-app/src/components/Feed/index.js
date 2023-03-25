@@ -37,12 +37,12 @@ function Feed() {
 
     const handleLiveVideo = (e) => {
         e.preventDefault();
-        window.alert('Live Video Feature Coming Soon...');
+        window.alert('Live video Feature Coming Soon...');
     }
 
     const handleFeelingActivity = (e) => {
         e.preventDefault();
-        window.alert('Live Video Feature Coming Soon...');
+        window.alert('Feeling/activity Feature Coming Soon...');
     }
 
     const closeMenu = () => setShowMenu(false);
@@ -77,14 +77,25 @@ function Feed() {
                         />
                     </div>
                     <div className="create-post-bottom">
-                        <button onClick={handleLiveVideo}>Live video</button>
+                        <button className="video-button" onClick={handleLiveVideo}>{<>
+                            <i className="fa-solid fa-video"></i>
+                            <p className="video-text">Live video</p>
+                            </>}
+                        </button>
                         <OpenModalButton
-                            className="post-button"
-                            buttonText="Photo/video"
+                            className="photo-button"
+                            buttonText={<>
+                                <i className="fa-regular fa-image"></i>
+                                <p className="photo-text">Photo</p>
+                            </>}
                             onItemClick={closeMenu}
                             modalComponent={<PostFormModal />}
                         />
-                        <button onClick={handleFeelingActivity}>Feeling/activity</button>
+                        <button className="feeling-button" onClick={handleFeelingActivity}>{<>
+                            <i className="fa-regular fa-face-laugh"></i>
+                            <p className="feeling-text">Feeling/activity</p>
+                            </>}
+                        </button>
                     </div>
                 </div>
                 {feedPostsArr.map((post) => {

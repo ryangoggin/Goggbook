@@ -22,8 +22,8 @@
     color: white;
 
     position: relative;
-    left: 6px;
-    top: 3px;
+    left: 8px;
+    top: 8px;
 
     width: 350px;
     height: 25px;
@@ -48,6 +48,13 @@
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     outline: none;
-    border: none;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0);
     background: none;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.comment-button:hover {
+    cursor: pointer;
+    background-color: #5a5c5e;
 }
