@@ -46,6 +46,13 @@
   cursor: pointer;
 }
 
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin: 4px 16px 16px;
+}
+
 .user-profile-pic {
   width: 40px;
   height: 40px;
@@ -59,9 +66,10 @@
   z-index: 3;
   top: 56px;
   right: 20px;
-  padding: 10px;
+  padding: 10px 10px 0px;
   background-color: #232425;
   border-radius: 5px;
+  width: 343px;
 }
 
 .profile-dropdown li {
@@ -78,6 +86,17 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-right: 8px;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  margin: 4px 16px 16px;
+}
+
+i.fa-solid.fa-right-from-bracket {
+  margin-right: 5px;
 }
 
 .logout-button {

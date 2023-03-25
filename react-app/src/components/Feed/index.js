@@ -63,7 +63,10 @@ function Feed() {
     return (
         <div className='feed-container'>
             <div className="feed-left">
-                <p>Left placeholder</p>
+                <div className="profile-info-container">
+                    <img className='profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                    <p className="profile-fullname">{sessionUser.firstName} {sessionUser.lastName}</p>
+                </div>
             </div>
             <div className="feed-center">
                 <div className="create-post-container">
@@ -106,7 +109,7 @@ function Feed() {
                     );
                 })}
             </div>
-            <div id="feed-right">
+            <div className="feed-right">
                 <p>Right placeholder</p>
             </div>
         </div>
