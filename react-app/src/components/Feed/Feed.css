@@ -25,8 +25,40 @@
     position: fixed;
     top: 56px;
     left: 0;
+
+    padding: 15px 0px 0px 15px;
+
     width: 280px;
     height: 100vh;
+}
+
+.profile-info-container {
+    display: flex;
+    align-items: center;
+
+    padding: 0px 8px 0px;
+    margin: 0px;
+
+    width: 248px;
+    height: 44px;
+}
+
+.profile-info-container:hover {
+    cursor: pointer;
+    background-color: #3a3b3c;
+    border-radius: 10px;
+}
+
+.profile-pic {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.profile-fullname {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 .feed-center {
@@ -50,7 +82,7 @@
     display: none;  /* Safari and Chrome */
 }
 
-#feed-right {
+.feed-right {
     background-color: #18191a;
     position: fixed;
     z-index: 0;

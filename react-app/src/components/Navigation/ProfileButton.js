@@ -45,15 +45,15 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>
+            <li className="dropdown-user-info">
             <img className="small-user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile`}/>
               {user.firstName} {user.lastName}
               </li>
             <li>
 
             </li>
-            <li>
-              <button className="logout-button" onClick={handleLogout}>Log Out</button>
+            <li className="logout-container">
+              <button className="logout-button" onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>Log Out</button>
             </li>
           </>
         ) : (
