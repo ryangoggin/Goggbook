@@ -148,7 +148,7 @@ def edit_post(id):
 @login_required
 def delete_post(id):
     '''
-    query a post, update it if it exists, and return it as a dictionary if successful
+    query a post, delete it if it exists, and return a message if successful
     '''
     post = Post.query.get(id)
 
