@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-// import OpenModalButton from "../OpenModalButton";
-// import EditCommentModal from '../EditCommentModal';
-// import DeleteCommentModal from '../DeleteCommentModal';
+import OpenModalButton from "../OpenModalButton";
+import EditCommentModal from '../EditCommentModal';
+import DeleteCommentModal from '../DeleteCommentModal';
 import './CommentItem.css'
 
 
@@ -11,24 +11,24 @@ function CommentItem({ comment }) {
     const sessionUser = useSelector((state) => state.session.user);
     const friendUsers = useSelector(state => state.friends);
 
-    // const [showMenu, setShowMenu] = useState(false);
-    // const ulRef = useRef();
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
 
-    // useEffect(() => {
-    //     if (!showMenu) return;
+    useEffect(() => {
+        if (!showMenu) return;
 
-    //     const closeMenu = (e) => {
-    //     if (!ulRef.current.contains(e.target)) {
-    //         setShowMenu(false);
-    //     }
-    //     };
+        const closeMenu = (e) => {
+        if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+        }
+        };
 
-    //     document.addEventListener("click", closeMenu);
+        document.addEventListener("click", closeMenu);
 
-    //     return () => document.removeEventListener("click", closeMenu);
-    // }, [showMenu]);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
 
-    // const closeMenu = () => setShowMenu(false);
+    const closeMenu = () => setShowMenu(false);
 
     if (!sessionUser) return null;
     if (!friendUsers) return null;
@@ -50,7 +50,7 @@ function CommentItem({ comment }) {
                 </div>
             </div>
             <div className='comment-right'>
-                {/* {comment.userId === sessionUser.id &&
+                {comment.userId === sessionUser.id &&
                     <>
                         <OpenModalButton
                             className="edit-button"
@@ -65,7 +65,7 @@ function CommentItem({ comment }) {
                             modalComponent={<DeleteCommentModal comment={comment} />}
                         />
                     </>
-                } */}
+                }
             </div>
 
         </div>

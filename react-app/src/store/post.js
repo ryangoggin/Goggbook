@@ -4,6 +4,8 @@ const ADD_POST = 'posts/ADD_POST';
 const EDIT_POST = 'posts/EDIT_POST';
 const REMOVE_POST = 'posts/REMOVE_POST';
 const ADD_COMMENT = 'posts/ADD_COMMENT';
+const EDIT_COMMENT = 'posts/EDIT_COMMENT';
+const REMOVE_COMMENT = 'posts/REMOVE_COMMENT';
 
 // POJO action creators:
 const loadPosts = posts => ({
@@ -31,6 +33,15 @@ const addComment = comment => ({
     comment
 });
 
+const editComment = comment => ({
+  type: EDIT_COMMENT,
+  comment
+});
+
+const removeComment = comment => ({
+  type: REMOVE_COMMENT,
+  comment
+});
 
 // thunk action creators:
 export const getFeed = () => async (dispatch) => {
@@ -97,6 +108,32 @@ export const createComment = (id, comment) => async (dispatch) => {
   }
 }
 
+export const updateComment = (id, comment) => async (dispatch) => {
+  const resComment = await fetch(`/api/comments/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(comment),
+  });
+
+  if (resComment.ok) {
+    const comment = await resComment.json();
+    dispatch(editComment(comment));
+    return comment;
+  }
+}
+
+export const deleteComment = (comment) => async (dispatch) => {
+  const res = await fetch(`/api/comments/${comment.id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (res.ok) {
+    dispatch(removeComment(comment));
+    return `Comment #${comment.id} deleted successfully`;
+  }
+}
+
 // initial state for reducer:
 const initialState = {};
 
@@ -125,6 +162,16 @@ const postReducer = (state = initialState, action) => {
       case ADD_COMMENT:
         newState = { ...state };
         newState[action.comment.postId].comments.push(action.comment);
+        return newState;
+      case EDIT_COMMENT:
+        newState = { ...state };
+        newState[action.comment.postId].comments.forEach(comment => comment.id === action.comment.id ?
+          (Object.assign(comment, action.comment)) : null);
+        break
+      case REMOVE_COMMENT:
+        newState = { ...state };
+        let newCommentArr = newState[action.comment.postId].comments.filter(comment => comment.id !== action.comment.id);
+        newState[action.comment.postId].comments = newCommentArr;
         return newState;
       default:
         return state;
