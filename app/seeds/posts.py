@@ -14,22 +14,22 @@ def seed_posts():
     ),
     Post(
         user_id=6,
-        content="Working on two new features for y'all (requests and direct) get ready for them next week!",
-        post_pic='https://ih1.redbubble.net/image.805682878.5807/raf,750x1000,075,t,FFFFFF:97ab1c12de.u1.jpg',
+        content="Working on two new features for y'all get ready for them next week!",
+        post_pic='https://goggbook-aws.s3.amazonaws.com/code-post-pic.jpg',
         created_at=date(2023,3,21),
         updated_at=date(2023,3,21)
     ),
     Post(
         user_id=2,
         content="Look at my cat!",
-        post_pic='https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
+        post_pic='https://goggbook-aws.s3.amazonaws.com/cat-post-pic.jpg',
         created_at=date(2023,3,21),
         updated_at=date(2023,3,21)
     ),
     Post(
         user_id=3,
         content="Went to the beach last weekend, look at how pretty this sunset was",
-        post_pic='https://i.pinimg.com/736x/c8/d6/bc/c8d6bc6ad3b08172bdbc1665f3ed080b.jpg',
+        post_pic='https://goggbook-aws.s3.amazonaws.com/sunset-post-pic.jpg',
         created_at=date(2023,3,21),
         updated_at=date(2023,3,21)
     ),

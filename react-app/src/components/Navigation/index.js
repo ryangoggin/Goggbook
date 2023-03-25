@@ -12,7 +12,9 @@ function Navigation({ isLoaded }){
 			{sessionUser && (
 				<div className='nav-container'>
 					<div className='nav-left'>
-						<NavLink className={"navlink-home"} exact to="/">Goggbook</NavLink>
+						<NavLink className={"navlink-home"} exact to="/">
+							<img className='logo' src="https://goggbook-aws.s3.amazonaws.com/favicon.jpg" alt="goggbook-logo" />
+						</NavLink>
 					</div>
 					<div className='nav-center'>
 					</div>
