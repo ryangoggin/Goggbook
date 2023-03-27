@@ -44,7 +44,7 @@
     outline: none;
 }
 
-.comment-button {
+.comment-button, .comment-button-disabled {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     outline: none;
@@ -57,4 +57,8 @@
 .comment-button:hover {
     cursor: pointer;
     background-color: #5a5c5e;
+}
+
+.comment-button-disabled:hover {
+    cursor: not-allowed;
 }
