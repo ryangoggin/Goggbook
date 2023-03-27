@@ -18,16 +18,11 @@ function PostItem({ post }) {
     const commentsArr = post.comments;
     const likesArr = post.likes;
     //use userId to normalize the likes array for easier searching
-    //useMemo to avoid unnecessary rerenders from useEffect if issues in production
     let likesObj = {};
-    // likesObj = useMemo(() => {
-    //     const
-        likesObj = {};
-        for (const like of likesArr) {
-            likesObj[like.userId] = like;
-        }
-        // return normalized;
-    // }, [likesArr]);
+    likesObj = {};
+    for (const like of likesArr) {
+        likesObj[like.userId] = like;
+    }
 
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -104,8 +99,6 @@ function PostItem({ post }) {
         e.preventDefault();
 
         let userLike = likesObj[sessionUser.id]; //get the userLike from likesObj
-        console.log("userLike: ", userLike);
-        console.log("likesObj: ", likesObj);
 
         // create the like if there isn't a userLike, delete the like if there is a userLike
         if (!userLike) {
@@ -120,6 +113,9 @@ function PostItem({ post }) {
     // moves cursor into the comment input
     const handleComment = async (e) => {
         e.preventDefault();
+
+        const commentFormContent = document.querySelector(`#post${post.id}`);
+        commentFormContent.select();
     }
 
     return (
@@ -136,7 +132,6 @@ function PostItem({ post }) {
                     <div className='post-top-right'>
                         {post.userId === sessionUser.id &&
                             <>
-
                                 <OpenModalButton
                                     className="edit-button"
                                     buttonText={<i className="fa-solid fa-pencil"></i>}
