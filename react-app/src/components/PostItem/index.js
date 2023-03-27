@@ -17,7 +17,8 @@ function PostItem({ post }) {
     const [liked, setLiked] = useState(false);
     const commentsArr = post.comments;
     const likesArr = post.likes;
-    //use userId to normalize the likes array for easier searching, useMemo to avoid unnecessary rerenders from useEffect
+    //use userId to normalize the likes array for easier searching
+    //useMemo to avoid unnecessary rerenders from useEffect if issues in production
     let likesObj = {};
     // likesObj = useMemo(() => {
     //     const
