@@ -1,1 +1,43 @@
 /* TODO Add site wide styles */
+@font-face {
+    font-family: 'Klavika Bold';
+    src: url('./static/klavika-bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Medium';
+    src: url('./static/klavika-medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Light';
+    src: url('./static/klavika-light.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.page-not-found {
+    font-family: 'Klavika Medium';
+    color:#1877f2;
+}
+
+.return-button {
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.return-button:hover {
+    cursor: pointer;
+}
+
+.return-text {
+    font-family: 'Klavika Medium';
+    font-size: 24px;
+    color:#1877f2;
+    margin: 0;
+}

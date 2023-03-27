@@ -37,6 +37,7 @@ function CommentForm({ post }) {
                 <div className="comment-form-right">
                     <form className="comment-form" onSubmit={handleSubmit} encType="multipart/form-data">
                         <textarea
+                            id={`post${post.id}`}
                             className="comment-form-content"
                             type="text"
                             value={content}

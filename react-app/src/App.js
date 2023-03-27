@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import { authenticate } from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const history = useHistory();
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const returnHome = async (e) => {
+    e.preventDefault();
+
+    history.push('/');
+  }
+
   return (
     <>
       <Switch>
-        <Route path="/" >
+        <Route exact path="/" >
           <Homepage />
+        </Route>
+        <Route>
+          <h1 className="page-not-found">Page Not Found</h1>
+          <button className="return-button" onClick={returnHome}>
+            <p className="return-text">
+              Return to Goggbook
+            </p>
+          </button>
         </Route>
       </Switch>
     </>
