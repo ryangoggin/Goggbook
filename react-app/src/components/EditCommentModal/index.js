@@ -36,7 +36,7 @@ function EditCommentModal({ comment }) {
 
 	return (
 		<>
-			<div className="comment-modal-container">
+			<div className="update-comment-modal-container">
                 <div>
                     <h2 className="update-comment">Update comment</h2>
                 </div>
@@ -53,7 +53,7 @@ function EditCommentModal({ comment }) {
 						placeholder={`Write a comment...`}
 						required
 					/>
-					<button className="post-button" type="submit">Comment</button>
+					<button className="post-button-modal" type="submit">Comment</button>
 				</form>
 			</div>
 		</>

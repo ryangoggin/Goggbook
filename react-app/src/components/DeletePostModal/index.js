@@ -31,20 +31,20 @@ function DeletePostModal({ post }) {
 
 	return (
 		<>
-			<div className="post-form-container">
+			<div className="delete-post-form-container">
                 <div>
-                    <h2 className="update-post">Delete post</h2>
+                    <h2 className="delete-post">Delete post</h2>
                 </div>
                 <div className="user-info">
                     <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
                     <p className='post-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
                 </div>
                 <div className="post-content-container">
-                    <p className="post-content">{content}</p>
+                    <p className="post-content-modal">{content}</p>
                 </div>
 				<form className="post-form" onSubmit={handleSubmit}>
-					<button className="delete-button" type="submit">Delete</button>
-                    <button className="cancel-delete-button" onClick={closeDelete}>Cancel</button>
+					<button className="delete-post-button-modal" type="submit">Delete</button>
+                    <button className="cancel-delete-post-button" onClick={closeDelete}>Cancel</button>
 				</form>
 			</div>
 		</>

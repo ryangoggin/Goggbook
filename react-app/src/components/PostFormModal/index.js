@@ -60,14 +60,16 @@ function PostFormModal() {
 						placeholder={`What's on your mind, ${sessionUser.firstName}?`}
 						required
 					/>
-                    <label htmlFor="add-pic">Add an image to your post</label>
-                    <input
-                        className="add-pic"
-                        type="file"
-                        accept="image/*"
-                        onChange={handlePostPic}
-                    />
-					<button className="post-button" type="submit">Post</button>
+                    <div className="add-pic-container">
+                        <label className="add-pic-label" htmlFor="add-pic">Add an image to your post:</label>
+                        <input
+                            className="add-pic"
+                            type="file"
+                            accept="image/*"
+                            onChange={handlePostPic}
+                        />
+                    </div>
+					<button className={(content.length === 0 || content.length > 2000) ? "post-button-disabled" : "post-button-modal"} type="submit" disabled={content.length === 0 || content.length > 2000}>Post</button>
 				</form>
 			</div>
 		</>

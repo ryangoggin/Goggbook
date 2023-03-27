@@ -20,7 +20,7 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(username, firstName, lastName, email, password, month, day, year);
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, firstName, lastName, email, password, month, day, year));
 			if (data) {
@@ -55,13 +55,14 @@ function SignupFormModal() {
 					<p className="quick-and-easy">It's quick and easy.</p>
 				</div>
 				<form className="signup-form" onSubmit={handleSubmit}>
-					<ul>
+					<ul className={errors.length > 0 ? "errors" : "hidden"}>
 						{errors.map((error, idx) => (
 							<li key={idx}>{error}</li>
 						))}
 					</ul>
 					<div className="name-inputs">
 						<input
+							className="name-input"
 							type="text"
 							value={firstName}
 							onChange={(e) => setFirstName(e.target.value)}
@@ -69,6 +70,7 @@ function SignupFormModal() {
 							required
 						/>
 						<input
+							className="name-input"
 							type="text"
 							value={lastName}
 							onChange={(e) => setLastName(e.target.value)}
@@ -77,6 +79,7 @@ function SignupFormModal() {
 						/>
 					</div>
 					<input
+						className="non-name-input"
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
@@ -84,6 +87,7 @@ function SignupFormModal() {
 						required
 					/>
 					<input
+						className="non-name-input"
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
@@ -91,6 +95,7 @@ function SignupFormModal() {
 						required
 					/>
 					<input
+						className="non-name-input"
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -98,6 +103,7 @@ function SignupFormModal() {
 						required
 					/>
 					<input
+						className="non-name-input"
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
