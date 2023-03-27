@@ -31,7 +31,7 @@ function DeleteCommentModal({ comment }) {
 
 	return (
 		<>
-			<div className="comment-modal-container">
+			<div className="delete-comment-modal-container">
                 <div>
                     <h2 className="delete-comment">Delete comment</h2>
                 </div>
@@ -40,11 +40,11 @@ function DeleteCommentModal({ comment }) {
                     <p className='post-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
                 </div>
                 <div className="post-content-container">
-                    <p className="post-content">{content}</p>
+                    <p className="comment-content-modal">{content}</p>
                 </div>
 				<form className="post-form" onSubmit={handleSubmit}>
-					<button className="delete-button" type="submit">Delete</button>
-                    <button className="cancel-delete-button" onClick={closeDelete}>Cancel</button>
+					<button className="delete-comment-button-modal" type="submit">Delete</button>
+                    <button className="cancel-delete-comment-button" onClick={closeDelete}>Cancel</button>
 				</form>
 			</div>
 		</>

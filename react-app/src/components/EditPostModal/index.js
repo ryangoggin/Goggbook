@@ -31,7 +31,7 @@ function EditPostModal({ post }) {
 
 	return (
 		<>
-			<div className="post-form-container">
+			<div className="update-post-form-container">
                 <div>
                     <h2 className="update-post">Update post</h2>
                 </div>
@@ -48,7 +48,7 @@ function EditPostModal({ post }) {
 						placeholder={`What's on your mind, ${sessionUser.firstName}?`}
 						required
 					/>
-					<button className="post-button" type="submit">Post</button>
+					<button className="post-button-modal" type="submit">Post</button>
 				</form>
 			</div>
 		</>
