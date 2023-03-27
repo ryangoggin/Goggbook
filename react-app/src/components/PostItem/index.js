@@ -1,17 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from "../OpenModalButton";
 import EditPostModal from '../EditPostModal';
 import DeletePostModal from '../DeletePostModal';
 import CommentItem from '../CommentItem';
 import CommentForm from '../CommentForm';
+import { createLike, deleteLike } from '../../store/post';
 import './PostItem.css'
 
 
 function PostItem({ post }) {
+    const dispatch = useDispatch();
     // select data from the Redux store
     const sessionUser = useSelector((state) => state.session.user);
     const friendUsers = useSelector(state => state.friends);
+    const [liked, setLiked] = useState(false);
+    const commentsArr = post.comments;
+    const likesArr = post.likes;
+    //use userId to normalize the likes array for easier searching, useMemo to avoid unnecessary rerenders from useEffect
+    let likesObj = {};
+    // likesObj = useMemo(() => {
+    //     const
+        likesObj = {};
+        for (const like of likesArr) {
+            likesObj[like.userId] = like;
+        }
+        // return normalized;
+    // }, [likesArr]);
 
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -32,6 +47,17 @@ function PostItem({ post }) {
 
     const closeMenu = () => setShowMenu(false);
 
+    // change liked state variable depending on seed data
+    useEffect(() => {
+        if (likesObj) {
+            if (sessionUser.id in likesObj) {
+                setLiked(true);
+            } else {
+                setLiked(false);
+            }
+        }
+    }, [likesObj, sessionUser.id])
+
     if (!sessionUser) return null;
     if (!friendUsers) return null;
 
@@ -39,15 +65,12 @@ function PostItem({ post }) {
 
     if (!postUser) return null;
 
-    const commentsArr = post.comments;
-    const likesArr = post.likes;
-
     // sort comments by post date
     commentsArr.sort(function(a,b){
         return new Date(b.updatedAt) - new Date(a.updatedAt);
     });
 
-    // helper to make updateAt a time since
+    // helper to make updateAt a time since last updated
     function convertUpdatedAt(updatedAt) {
         const updatedAtDate = new Date(updatedAt);
         const now = new Date();
@@ -67,8 +90,35 @@ function PostItem({ post }) {
         } else if (timeDiffHr > 0) {
             return `${timeDiffHr}h`;
         } else {
-            return `${timeDiffMin}m`;
+            if (timeDiffMin < 0) {
+                return '0m'; // occasionally calculates as -1m, so set to 0m in those cases
+            } else {
+                return `${timeDiffMin}m`;
+            }
         }
+    }
+
+    // creates a new like for the post from current user if post isn't already liked, deletes the like from current user if it does exist
+    const handleLike = async (e) => {
+        e.preventDefault();
+
+        let userLike = likesObj[sessionUser.id]; //get the userLike from likesObj
+        console.log("userLike: ", userLike);
+        console.log("likesObj: ", likesObj);
+
+        // create the like if there isn't a userLike, delete the like if there is a userLike
+        if (!userLike) {
+            dispatch(createLike(post.id));
+            setLiked(true);
+        } else {
+            dispatch(deleteLike(userLike));
+            setLiked(false);
+        }
+    }
+
+    // moves cursor into the comment input
+    const handleComment = async (e) => {
+        e.preventDefault();
     }
 
     return (
@@ -112,13 +162,23 @@ function PostItem({ post }) {
             <div className='post-lower-half'>
                 <div className='like-and-comment-counter-container'>
                     <div className='like-counter'>
-                        <i className="fa-regular fa-thumbs-up"></i>
+                        <i className="fa-regular fa-thumbs-up count"></i>
                         <p className='like-count'>{likesArr.length}</p>
                     </div>
                     <div className='comment-counter'>
                         <p className='comment-count'>{commentsArr.length}</p>
-                        <i className="fa-regular fa-comment"></i>
+                        <i className="fa-regular fa-comment count"></i>
                     </div>
+                </div>
+                <div className='like-and-comment-button-container'>
+                    <button className='like-button' onClick={handleLike}>
+                        <i className={liked ? "fa-solid fa-thumbs-up button" : "fa-regular fa-thumbs-up button"}></i>
+                        <p className={liked ? 'liked-like-text' : 'like-text'}>Like</p>
+                    </button>
+                    <button className='comment-button' onClick={handleComment}>
+                        <i className="fa-regular fa-comment button"></i>
+                        <p className='comment-text'>Comment</p>
+                    </button>
                 </div>
                 <div className='comments-container'>
                     <CommentForm post={post}/>

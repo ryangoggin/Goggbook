@@ -6,6 +6,8 @@ const REMOVE_POST = 'posts/REMOVE_POST';
 const ADD_COMMENT = 'posts/ADD_COMMENT';
 const EDIT_COMMENT = 'posts/EDIT_COMMENT';
 const REMOVE_COMMENT = 'posts/REMOVE_COMMENT';
+const ADD_LIKE = 'posts/ADD_LIKE';
+const REMOVE_LIKE = 'posts/REMOVE_LIKE'
 
 // POJO action creators:
 const loadPosts = posts => ({
@@ -34,13 +36,23 @@ const addComment = comment => ({
 });
 
 const editComment = comment => ({
-  type: EDIT_COMMENT,
-  comment
+    type: EDIT_COMMENT,
+    comment
 });
 
 const removeComment = comment => ({
-  type: REMOVE_COMMENT,
-  comment
+    type: REMOVE_COMMENT,
+    comment
+});
+
+const addLike = like => ({
+    type: ADD_LIKE,
+    like
+});
+
+const removeLike = like => ({
+    type: REMOVE_LIKE,
+    like
 });
 
 // thunk action creators:
@@ -134,6 +146,31 @@ export const deleteComment = (comment) => async (dispatch) => {
   }
 }
 
+export const createLike = (id) => async (dispatch) => {
+  const resLike = await fetch(`api/posts/${id}/like`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" }
+  });
+
+  if (resLike.ok) {
+    const like = await resLike.json();
+    dispatch(addLike(like));
+    return like;
+  }
+}
+
+export const deleteLike = (like) => async (dispatch) => {
+  const res = await fetch(`/api/likes/${like.id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (res.ok) {
+    dispatch(removeLike(like));
+    return `Like #${like.id} deleted successfully`;
+  }
+}
+
 // initial state for reducer:
 const initialState = {};
 
@@ -172,6 +209,15 @@ const postReducer = (state = initialState, action) => {
         newState = { ...state };
         let newCommentArr = newState[action.comment.postId].comments.filter(comment => comment.id !== action.comment.id);
         newState[action.comment.postId].comments = newCommentArr;
+        return newState;
+      case ADD_LIKE:
+        newState = { ...state };
+        newState[action.like.postId].likes.push(action.like);
+        return newState;
+      case REMOVE_LIKE:
+        newState = { ...state };
+        let newLikeArr = newState[action.like.postId].likes.filter(like => like.id !== action.like.id);
+        newState[action.like.postId].likes = newLikeArr;
         return newState;
       default:
         return state;

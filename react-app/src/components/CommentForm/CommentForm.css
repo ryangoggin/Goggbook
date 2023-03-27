@@ -1,6 +1,7 @@
 .comment-form-container {
     display: flex;
     margin-bottom: 10px;
+    margin-top: 5px;
 }
 
 .comment-form-right {
@@ -44,7 +45,7 @@
     outline: none;
 }
 
-.comment-button, .comment-button-disabled {
+.send-comment-button, .send-comment-button-disabled {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     outline: none;
@@ -54,11 +55,11 @@
     border-radius: 0px 20px 20px 0px;
 }
 
-.comment-button:hover {
+.send-comment-button:hover {
     cursor: pointer;
     background-color: #5a5c5e;
 }
 
-.comment-button-disabled:hover {
+.send-comment-button-disabled:hover {
     cursor: not-allowed;
 }

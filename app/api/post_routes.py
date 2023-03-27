@@ -168,7 +168,7 @@ def delete_post(id):
 @login_required
 def create_new_comment(id):
     '''
-    create a new comment and return it as a dictionary if successful
+    create a new comment for a post by post id and return it as a dictionary if successful
     '''
     form = CommentForm()
     form['csrf_token'].data = request.cookies["csrf_token"]
@@ -198,9 +198,9 @@ def create_new_comment(id):
 @login_required
 def create_new_like(id):
     '''
-    create a new like and return it as a dictionary if successful
+    create a new like for a post by post id and return it as a dictionary if successful
     '''
-    post_like = Like.query.filter(Like.user_id == current_user.id and Like.post_id == id)
+    post_like = Like.query.filter((Like.user_id == current_user.id) & (Like.post_id == id)).all()
 
     errors = {}
 
