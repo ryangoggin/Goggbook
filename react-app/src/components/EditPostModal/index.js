@@ -48,7 +48,7 @@ function EditPostModal({ post }) {
 						placeholder={`What's on your mind, ${sessionUser.firstName}?`}
 						required
 					/>
-					<button className="post-button-modal" type="submit">Post</button>
+					<button className={(content.length === 0 || content.length > 2000) ? "post-button-disabled" : "post-button-modal"} type="submit" disabled={content.length === 0 || content.length > 2000}>Post</button>
 				</form>
 			</div>
 		</>

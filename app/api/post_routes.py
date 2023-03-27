@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import db, Post, User, Friend, Comment
+from app.models import db, Post, User, Friend, Comment, Like
 from app.api.aws_helpers import upload_file_to_s3, get_unique_filename
 from ..forms import PostForm, CommentForm
 from datetime import datetime
@@ -192,3 +192,27 @@ def create_new_comment(id):
         db.session.commit()
         return new_comment.to_dict()
     return jsonify({"errors": form.errors}), 400
+
+
+@post_routes.route("/<int:id>/like", methods=['POST'])
+@login_required
+def create_new_like(id):
+    '''
+    create a new like and return it as a dictionary if successful
+    '''
+    post_like = Like.query.filter(Like.user_id == current_user.id and Like.post_id == id)
+
+    errors = {}
+
+    if (post_like):
+        errors["like"] = "Cannot like a post you already liked"
+        return jsonify({"errors": errors}), 400
+    else:
+        new_like = Like(
+        user_id=current_user.id,
+        post_id=id,
+        )
+
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict()

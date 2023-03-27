@@ -53,7 +53,7 @@ function EditCommentModal({ comment }) {
 						placeholder={`Write a comment...`}
 						required
 					/>
-					<button className="post-button-modal" type="submit">Comment</button>
+					<button className={(content.length === 0 || content.length > 2000) ? "post-button-disabled" : "post-button-modal"} type="submit" disabled={content.length === 0 || content.length > 2000}>Comment</button>
 				</form>
 			</div>
 		</>

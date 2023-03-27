@@ -44,7 +44,7 @@ function CommentForm({ post }) {
                             placeholder={`Write a comment...`}
                             required
                         />
-                        <button className="comment-button" type="submit">Comment</button>
+                        <button className={(content.length === 0 || content.length > 2000) ? "comment-button-disabled" : "comment-button"} type="submit" disabled={content.length === 0 || content.length > 2000}>Comment</button>
                     </form>
                 </div>
 			</div>
