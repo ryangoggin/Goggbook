@@ -14,10 +14,12 @@
     color: #b94a48;
 
     margin-top: 0;
+    padding: 0px 20px 0px 35px;
 }
 
 .errors li {
-    list-style: none;
+    /* list-style: none; */
+    margin-bottom: 5px;
 }
 
 .signup-container {
