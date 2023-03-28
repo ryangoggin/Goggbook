@@ -9,6 +9,7 @@ function EditCommentModal({ comment }) {
 	const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 	const [content, setContent] = useState(comment.content);
+    const [errors, setErrors] = useState([]);
 
 	const { closeModal } = useModal();
 
@@ -18,6 +19,17 @@ function EditCommentModal({ comment }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let errorsObj = {};
+
+        if (content.length === 0 || content.length > 2000) {
+            errorsObj.content = "Comments must be between 1 and 2000 characters, please change your comment length and try again.";
+        }
+
+        if (Object.values(errorsObj).length > 0) {
+            setErrors(Object.values(errorsObj));
+            return;
+        };
 
         const editComment = {
             content: content,
@@ -30,6 +42,7 @@ function EditCommentModal({ comment }) {
             })
 
         setContent(content);
+        setErrors([]);
     };
 
     if (!sessionUser) return null;
@@ -38,7 +51,12 @@ function EditCommentModal({ comment }) {
 		<>
 			<div className="update-comment-modal-container">
                 <div>
-                    <h2 className="update-comment">Update comment</h2>
+                    <h2 className="update-comment">Edit comment</h2>
+                    <ul className={errors.length > 0 ? "errors" : "hidden"}>
+						{errors.map((error, idx) => (
+							<li key={idx}>{error}</li>
+						))}
+					</ul>
                 </div>
                 <div className="user-info">
                     <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
@@ -53,7 +71,7 @@ function EditCommentModal({ comment }) {
 						placeholder={`Write a comment...`}
 						required
 					/>
-					<button className={(content.length === 0 || content.length > 2000) ? "post-button-disabled" : "post-button-modal"} type="submit" disabled={content.length === 0 || content.length > 2000}>Comment</button>
+					<button className="post-button-modal" type="submit">Comment</button>
 				</form>
 			</div>
 		</>
