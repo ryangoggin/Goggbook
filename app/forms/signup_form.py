@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
@@ -20,12 +20,20 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+def is_email(form, field):
+    # Checking if entered email has an @ and proper domain
+    email = field.data
+    split_email = email.split(".")
+    if "@" not in email or split_email[-1] not in ["com", "net", "org", "edu", "io"]:
+        raise ValidationError('Please enter a valid email.')
+
+
 class SignUpForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired(), username_exists])
-    first_name = StringField('first_name', validators=[DataRequired()])
-    last_name = StringField('last_name', validators=[DataRequired()])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired()])
+    username = StringField('username', validators=[DataRequired(), Length(min=5, max=50), username_exists])
+    first_name = StringField('first_name', validators=[DataRequired(), Length(min=2, max=40)])
+    last_name = StringField('last_name', validators=[DataRequired(), Length(min=2, max=40)])
+    email = StringField('email', validators=[DataRequired(), Length(max=255), user_exists, is_email])
+    password = StringField('password', validators=[DataRequired(), Length(min=6, max=40)])
     day = IntegerField('day', validators=[DataRequired()])
     month = IntegerField('month', validators=[DataRequired()])
     year = IntegerField('year', validators=[DataRequired()])

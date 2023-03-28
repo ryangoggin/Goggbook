@@ -14,7 +14,7 @@ function SignupFormModal() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [month, setMonth] = useState(1);
     const [day, setDay] = useState(1);
-    const [year, setYear] = useState(2023);
+    const [year, setYear] = useState(2010);
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
@@ -34,6 +34,8 @@ function SignupFormModal() {
 			]);
 		}
 	};
+
+	console.log("errors: ", errors);
 
 	const generateOptions = (start, end, reverse) => {
 		const options = [];
@@ -123,7 +125,7 @@ function SignupFormModal() {
 							</select>
 							<select id="year" value={year} onChange={(e) => setYear(e.target.value)} className="signup-dob-select" required>
 							<option value="">Year</option>
-							{generateOptions(1930, new Date().getFullYear(), true)}
+							{generateOptions(1920, 2010, true)}
 							</select>
 						</div>
 					</div>
