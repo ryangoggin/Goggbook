@@ -28,7 +28,8 @@
     background-color: #242526;
 
     width: 500px;
-    height: 428px;
+    min-height: 428px;
+    height: fit-content;
     box-sizing: border-box;
 
     border-radius: 10px;
