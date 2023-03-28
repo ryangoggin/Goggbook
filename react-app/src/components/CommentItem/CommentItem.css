@@ -30,6 +30,10 @@
 
 .comment-content {
     font-size: 15px;
+
+    overflow-wrap: break-word;
+    max-width: 330px;
+
     margin: 0;
 }
 
