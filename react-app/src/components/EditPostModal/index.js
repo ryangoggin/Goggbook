@@ -8,11 +8,23 @@ function EditPostModal({ post }) {
 	const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 	const [content, setContent] = useState(post.content);
+    const [errors, setErrors] = useState([]);
 
 	const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let errorsObj = {};
+
+        if (content.length === 0 || content.length > 2000) {
+            errorsObj.content = "Posts must be between 1 and 2000 characters, please change your post length and try again.";
+        }
+
+        if (Object.values(errorsObj).length > 0) {
+            setErrors(Object.values(errorsObj));
+            return;
+        };
 
         const editPost = {
             content: content,
@@ -25,6 +37,7 @@ function EditPostModal({ post }) {
             })
 
         setContent(content);
+        setErrors([]);
     };
 
     if (!sessionUser) return null;
@@ -33,7 +46,12 @@ function EditPostModal({ post }) {
 		<>
 			<div className="update-post-form-container">
                 <div>
-                    <h2 className="update-post">Update post</h2>
+                    <h2 className="update-post">Edit post</h2>
+                    <ul className={errors.length > 0 ? "errors" : "hidden"}>
+						{errors.map((error, idx) => (
+							<li key={idx}>{error}</li>
+						))}
+					</ul>
                 </div>
                 <div className="user-info">
                     <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
@@ -48,7 +66,7 @@ function EditPostModal({ post }) {
 						placeholder={`What's on your mind, ${sessionUser.firstName}?`}
 						required
 					/>
-					<button className={(content.length === 0 || content.length > 2000) ? "post-button-disabled" : "post-button-modal"} type="submit" disabled={content.length === 0 || content.length > 2000}>Post</button>
+					<button className="post-button-modal" type="submit">Post</button>
 				</form>
 			</div>
 		</>

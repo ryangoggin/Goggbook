@@ -8,6 +8,9 @@
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 
+    position: relative;
+    right: 15px;
+
     display: flex;
     justify-content: center;
 
@@ -92,7 +95,7 @@
     color: white;
 }
 
-.post-button-modal, .post-button-disabled {
+.post-button-modal {
     color: #b1b1b1;
     font-size: 14px;
     background-color: #505151;
@@ -106,8 +109,4 @@
 
 .post-button-modal:hover {
     cursor: pointer;
-}
-
-.post-button-disabled:hover {
-    cursor: not-allowed;
 }
