@@ -35,8 +35,6 @@ function SignupFormModal() {
 		}
 	};
 
-	console.log("errors: ", errors);
-
 	const generateOptions = (start, end, reverse) => {
 		const options = [];
 		for (let i = start; i <= end; i++) {
