@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import PostItem from "../PostItem";
 import { getFeed } from "../../store/post";
 import { getFriends } from "../../store/friend";
+import { getAllUsers } from "../../store/users";
 import { clearProfile } from "../../store/profile";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
@@ -34,7 +35,8 @@ function Feed() {
     }, [showMenu]);
 
     useEffect(() => {
-        dispatch(clearProfile())
+        dispatch(clearProfile());
+        dispatch(getAllUsers());
         dispatch(getFeed());
         dispatch(getFriends());
     }, [dispatch]);

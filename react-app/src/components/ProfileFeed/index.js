@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import PostItem from "../PostItem";
-import { getFeed } from "../../store/post"; // NEED TO MAKE getProfileFeed in post reducer!
-import { getProfileUser, getProfileFriends } from "../../store/profile";
+import { getProfileUser, getProfileFriends, getProfilePosts } from "../../store/profile";
+import { getAllUsers } from "../../store/users";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
 import ProfileTop from "../ProfileTop";
@@ -14,7 +14,7 @@ function ProfileFeed() {
     const sessionUser = useSelector(state => state.session.user);
     const profileUser = useSelector(state => state.profile.user);
     const profileFriends = useSelector(state => state.profile.friends);
-    const feedPosts = useSelector(state => state.posts);
+    const profileFeed = useSelector(state => state.profile.posts);
     const { userId } = useParams();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -37,9 +37,10 @@ function ProfileFeed() {
     }, [showMenu]);
 
     useEffect(() => {
-        dispatch(getFeed()); // REPLACE WITH getProfileFeed when made
+        dispatch(getAllUsers());
         dispatch(getProfileUser(userId));
         dispatch(getProfileFriends(userId));
+        dispatch(getProfilePosts(userId));
     }, [dispatch, userId]);
 
     if (!profileFriends) return null;
@@ -61,18 +62,17 @@ function ProfileFeed() {
 
     const closeMenu = () => setShowMenu(false);
 
-    let feedPostsArr = [];
-    let profileFeedPostsArr = [];
+    let profileFeedArr = [];
 
-    if (!feedPosts) {
+
+    if (!profileFeed) {
         return null;
     } else {
-        feedPostsArr = Object.values(feedPosts);
-        profileFeedPostsArr = feedPostsArr.filter(post => post.userId === profileUser?.id); // won't need to filter after getProfileFeed is made
+        profileFeedArr = Object.values(profileFeed);
     }
 
     // sort feed posts by post date
-    profileFeedPostsArr.sort(function(a,b){
+    profileFeedArr.sort(function(a,b){
         return new Date(b.updatedAt) - new Date(a.updatedAt);
     });
 
@@ -147,7 +147,7 @@ function ProfileFeed() {
                             <div className="friends-container">
                                 {firstSixFriends.map((friend) => {
                                     return (
-                                        <div className="friend-container">
+                                        <div key={`friend${friend.id}`} className="friend-container">
                                             <img className="friend-profile-pic" src={friend.profilePic} alt={`${friend.firstName} ${friend.lastName} Profile`} />
                                             <p className="friend-fullname">{friend.firstName} {friend.lastName}</p>
                                         </div>
@@ -193,9 +193,9 @@ function ProfileFeed() {
                                 </div>
                             </div>
                         }
-                        {profileFeedPostsArr.map((post) => {
+                        {profileFeedArr.map((post) => {
                             return (
-                                <div key={`post${post.id}`} className='post-item-container'>
+                                <div key={`profile-post${post.id}`} className='post-item-container'>
                                     <PostItem post={post} />
                                 </div>
                             );

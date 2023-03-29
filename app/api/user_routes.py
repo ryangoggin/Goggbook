@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import User, Friend
+from app.models import User, Friend, Post
 
 user_routes = Blueprint('users', __name__)
 
@@ -66,3 +66,21 @@ def current_user_friends():
     response = [user.to_dict() for user in friendUsers]
 
     return {'friends': response}
+
+# get all posts by the profile user for the profile page feed
+@user_routes.route("/<int:id>/feed")
+@login_required
+def get_all_feed_posts(id):
+    '''
+    queries posts by profile user on GET requests
+    '''
+    user = User.query.get(id)
+
+    if user is None:
+        return jsonify({'error': 'User not found'}), 404
+
+    posts = Post.query.filter(Post.user_id == id).all()
+
+    response = [post.to_dict() for post in posts]
+
+    return {'posts': response }
