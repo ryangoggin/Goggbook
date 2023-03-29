@@ -1,0 +1,200 @@
+@media (min-width: 980px) {
+    .profile-about {
+        width: 425px;
+    }
+
+    .profile-friends {
+        width: 425px;
+    }
+
+    .friends-container {
+        column-gap: 43px;
+    }
+}
+
+@media (max-width: 980px) {
+    .profile-about {
+        width: 360px;
+    }
+
+    .profile-friends {
+        width: 360px;
+    }
+
+    .friends-container {
+        column-gap: 11px;
+    }
+}
+
+@media (max-width: 915px) {
+    .profile-feed-bottom-left {
+        visibility: hidden;
+        width: 0;
+    }
+
+    .profile-about {
+        visibility: hidden;
+    }
+
+    .profile-friends {
+        visibility: hidden;
+    }
+}
+
+.profile-feed-container {
+    position: fixed;
+    top: 56px;
+    display: flex;
+}
+
+.profile-feed-left-bar {
+    background-color: #18191a;
+    position: fixed;
+    top: 56px;
+    left: 0;
+
+    padding: 15px 0px 0px 15px;
+
+    width: 60px;
+    height: 100vh;
+}
+
+.profile-feed-center {
+    background-color: #18191a;
+
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0px 0px 15px;
+    margin: 0;
+
+    box-sizing: border-box;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.profile-feed-center::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.profile-feed-bottom {
+    display: flex;
+}
+
+.profile-feed-bottom-right {
+    width: fit-content;
+    height: fit-content;
+
+    margin: 8px;
+}
+
+.profile-feed-bottom-left {
+    margin: 8px;
+}
+
+.profile-about {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: #242526;
+
+    height: fit-content;
+
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.intro {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+}
+
+.bio-container{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    border-bottom: 1px solid #38393b;
+}
+
+.bio {
+    padding: 16px 0px 16px;
+    margin: 0;
+}
+
+.birthday-container {
+    display: flex;
+
+    align-items: center;
+    margin-top: 16px;
+}
+
+.fa-solid.fa-cake-candles {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.birthday {
+    margin: 0;
+}
+
+.profile-friends {
+    background-color: #242526;
+
+    height: fit-content;
+
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.friends {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+}
+
+.friends-container {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(3, 102px);
+}
+
+.friend-container {
+    border-radius: 10px;
+    padding: 0px 0px 16px;
+    margin-top: 16px;
+}
+
+.friend-container:hover {
+    cursor: pointer;
+    background-color: #3a3b3c;
+}
+
+.friend-profile-pic {
+    width: 102px;
+    height: 102px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.friend-fullname {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: white;
+    margin-left: 2px;
+    overflow-wrap: break-word;
+}

@@ -16,6 +16,8 @@
   justify-content: space-between;
   background-color: #242526;
   height: 56px;
+
+  border-bottom: 1px solid #38393b;
 }
 
 .nav-left {
@@ -70,6 +72,8 @@
   background-color: #232425;
   border-radius: 5px;
   width: 343px;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
 }
 
 .profile-dropdown li {

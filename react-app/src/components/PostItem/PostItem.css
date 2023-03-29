@@ -13,17 +13,38 @@
 }
 
 .post-profile-pic {
-    width: 40px;
-    height: 40px;
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+
+    width: 43px;
+    height: 43px;
     border-radius: 50%;
-    margin-right: 8px;
 }
 
 .post-fullname {
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 15px;
-    padding-bottom: 5px;
+    color: white;
+
     margin: 0;
+}
+
+.post-fullname-button {
+    position: relative;
+    top: 5px;
+
+    height: 17px;
+    background: none;
+    padding: 0;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+}
+
+.post-fullname-button:hover {
+    cursor: pointer;
 }
 
 .post-updated-at {

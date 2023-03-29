@@ -36,8 +36,8 @@ function DeletePostModal({ post }) {
                     <h2 className="delete-post">Delete post</h2>
                 </div>
                 <div className="user-info">
-                    <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
-                    <p className='post-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
+                    <img className='post-modal-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                    <p className='post-modal-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
                 </div>
                 <div className="post-content-container">
                     <p className="post-content-modal">{content}</p>

@@ -59,8 +59,8 @@ function EditCommentModal({ comment }) {
 					</ul>
                 </div>
                 <div className="user-info">
-                    <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
-                    <p className='post-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
+                    <img className='post-modal-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                    <p className='post-modal-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
                 </div>
 				<form className="post-form" onSubmit={handleSubmit}>
 					<textarea
