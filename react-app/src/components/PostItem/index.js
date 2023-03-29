@@ -11,11 +11,12 @@ import './PostItem.css'
 
 
 function PostItem({ post }) {
+    console.log("post inside PostItem START: ", post);
     const dispatch = useDispatch();
     const history = useHistory();
     // select data from the Redux store
     const sessionUser = useSelector((state) => state.session.user);
-    const friendUsers = useSelector(state => state.friends);
+    const allUsers = useSelector(state => state.users);
     const [liked, setLiked] = useState(false);
     const commentsArr = post.comments;
     const likesArr = post.likes;
@@ -33,7 +34,7 @@ function PostItem({ post }) {
         if (!showMenu) return;
 
         const closeMenu = (e) => {
-        if (!ulRef.current.contains(e.target)) {
+        if (!ulRef.current?.contains(e.target)) {
             setShowMenu(false);
         }
         };
@@ -57,11 +58,12 @@ function PostItem({ post }) {
     }, [likesObj, sessionUser.id])
 
     if (!sessionUser) return null;
-    if (!friendUsers) return null;
 
-    const postUser = friendUsers[post.userId];
+    const postUser = allUsers[post.userId];
 
     if (!postUser) return null;
+
+    console.log("post inside PostItem END: ", post);
 
     // sort comments by post date
     commentsArr.sort(function(a,b){

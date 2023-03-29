@@ -1,6 +1,7 @@
 // types:
 const LOAD_PROFILE_USER = 'profile/LOAD_PROFILE_USER';
 const LOAD_PROFILE_FRIENDS = 'profile/LOAD_PROFILE_FRIENDS';
+const LOAD_PROFILE_POSTS = 'profile/LOAD_PROFILE_POSTS';
 const CLEAR_PROFILE = 'profile/CLEAR_PROFILE';
 
 
@@ -13,6 +14,11 @@ const loadProfileUser = user => ({
 const loadProfileFriends = friends => ({
     type: LOAD_PROFILE_FRIENDS,
     friends
+});
+
+const loadProfilePosts = posts => ({
+    type: LOAD_PROFILE_POSTS,
+    posts
 });
 
 export const clearProfile = () => ({
@@ -41,7 +47,18 @@ export const getProfileFriends = (id) => async dispatch => {
   }
 };
 
-const initialState = { user: null, friends: null };
+export const getProfilePosts = (id) => async dispatch => {
+    const res = await fetch(`/api/users/${id}/feed`);
+
+    if (res.ok) {
+      const posts = await res.json();
+      const postsArr = posts.posts;
+      dispatch(loadProfilePosts(postsArr));
+      return postsArr;
+    }
+  };
+
+const initialState = { user: null, friends: null, posts: null };
 
 const profileReducer = (state = initialState, action) => {
     let newState = {};
@@ -59,8 +76,17 @@ const profileReducer = (state = initialState, action) => {
             });
             newState.friends = normalizedFriends;
             return newState;
+        case LOAD_PROFILE_POSTS:
+            newState = {...state};
+            let normalizedPosts = {};
+            const postsArr = action.posts;
+            postsArr.forEach(post => {
+            normalizedPosts[post.id] = post;
+            });
+            newState.posts = normalizedPosts;
+            return newState;
         case CLEAR_PROFILE:
-            newState = { user: null, friends: null };
+            newState = { user: null, friends: null, posts: null };
             return newState;
         default:
             return state;
