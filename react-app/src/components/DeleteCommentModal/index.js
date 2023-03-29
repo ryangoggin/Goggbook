@@ -36,8 +36,8 @@ function DeleteCommentModal({ comment }) {
                     <h2 className="delete-comment">Delete comment</h2>
                 </div>
                 <div className="user-info">
-                    <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
-                    <p className='post-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
+                    <img className='post-modal-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                    <p className='post-modal-fullname'>{sessionUser.firstName} {sessionUser.lastName}</p>
                 </div>
                 <div className="post-content-container">
                     <p className="comment-content-modal">{content}</p>

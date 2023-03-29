@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import PostItem from "../PostItem";
 import { getFeed } from "../../store/post";
 import { getFriends } from "../../store/friend";
+import { clearProfile } from "../../store/profile";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
 import "./Feed.css";
@@ -33,6 +34,7 @@ function Feed() {
     }, [showMenu]);
 
     useEffect(() => {
+        dispatch(clearProfile())
         dispatch(getFeed());
         dispatch(getFriends());
     }, [dispatch]);
@@ -47,7 +49,7 @@ function Feed() {
         window.alert('Feeling/activity Feature Coming Soon...');
     }
 
-    const handleProfileClick = (e) => {
+    const handleCurrProfileClick = (e) => {
         e.preventDefault();
         history.push(`/${sessionUser.id}`);
     };
@@ -71,7 +73,7 @@ function Feed() {
         <div className='feed-container'>
             <div className="feed-left">
                 <div className="profile-info-container">
-                    <button className="user-profile-button" onClick={handleProfileClick}>
+                    <button className="user-profile-button" onClick={handleCurrProfileClick}>
                         <img className='profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
                         <p className="profile-fullname">{sessionUser.firstName} {sessionUser.lastName}</p>
                     </button>
@@ -80,7 +82,7 @@ function Feed() {
             <div className="feed-center">
                 <div className="create-post-container">
                     <div className="create-post-top">
-                    <button className="user-profile-pic-button" onClick={handleProfileClick}>
+                    <button className="user-profile-pic-button" onClick={handleCurrProfileClick}>
                         <img className='create-post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
                     </button>
                         <OpenModalButton

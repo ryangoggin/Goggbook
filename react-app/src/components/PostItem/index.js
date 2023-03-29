@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import EditPostModal from '../EditPostModal';
 import DeletePostModal from '../DeletePostModal';
@@ -11,6 +12,7 @@ import './PostItem.css'
 
 function PostItem({ post }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     // select data from the Redux store
     const sessionUser = useSelector((state) => state.session.user);
     const friendUsers = useSelector(state => state.friends);
@@ -76,7 +78,7 @@ function PostItem({ post }) {
         const timeDiffMin = Math.floor(timeDiffMs / 60000);
         const timeDiffHr = Math.floor(timeDiffMin / 60);
         const timeDiffDay = Math.floor(timeDiffHr / 24);
-        const timeDiffYr = Math.floor(timeDiffHr / 365);
+        const timeDiffYr = Math.floor(timeDiffDay / 365);
 
         // Return formatted time string
         if (timeDiffYr > 0) {
@@ -118,14 +120,23 @@ function PostItem({ post }) {
         commentFormContent.select();
     }
 
+    const handleProfileClick = (e) => {
+        e.preventDefault();
+        history.push(`/${post.userId}`);
+    };
+
     return (
         <div className='post-item'>
             <div className='post-upper-half'>
                 <div className='post-top'>
                     <div className='post-top-left'>
-                        <img className='post-profile-pic' src={`${postUser.profilePic}`} alt={`${postUser.firstName} ${postUser.lastName} Profile`} />
+                        <button className='user-profile-pic-button' onClick={handleProfileClick}>
+                            <img className='post-profile-pic' src={`${postUser.profilePic}`} alt={`${postUser.firstName} ${postUser.lastName} Profile`} />
+                        </button>
                         <div className='post-author'>
-                            <p className='post-fullname'>{postUser.firstName} {postUser.lastName}</p>
+                            <button className='post-fullname-button' onClick={handleProfileClick}>
+                                <p className='post-fullname'>{postUser.firstName} {postUser.lastName}</p>
+                            </button>
                             <p className='post-updated-at'>{convertUpdatedAt(post.updatedAt)}</p>
                         </div>
                     </div>

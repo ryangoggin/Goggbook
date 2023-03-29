@@ -1,6 +1,7 @@
 // types:
 const LOAD_PROFILE_USER = 'profile/LOAD_PROFILE_USER';
 const LOAD_PROFILE_FRIENDS = 'profile/LOAD_PROFILE_FRIENDS';
+const CLEAR_PROFILE = 'profile/CLEAR_PROFILE';
 
 
 // POJO action creators:
@@ -12,6 +13,10 @@ const loadProfileUser = user => ({
 const loadProfileFriends = friends => ({
     type: LOAD_PROFILE_FRIENDS,
     friends
+});
+
+export const clearProfile = () => ({
+    type: CLEAR_PROFILE
 });
 
 
@@ -53,6 +58,9 @@ const profileReducer = (state = initialState, action) => {
             normalizedFriends[friend.id] = friend;
             });
             newState.friends = normalizedFriends;
+            return newState;
+        case CLEAR_PROFILE:
+            newState = { user: null, friends: null };
             return newState;
         default:
             return state;
