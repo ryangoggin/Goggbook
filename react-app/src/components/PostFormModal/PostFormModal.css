@@ -95,6 +95,32 @@
     color: white;
 }
 
+/* file upload button for chrome */
+::-webkit-file-upload-button {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    color: white;
+}
+
+::-webkit-file-upload-button:hover {
+    cursor: pointer;
+    background: #505151;
+}
+
+/* fill upload button for IE */
+::-ms-browse {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    color: white;
+}
+
+::-ms-browse:hover {
+    cursor: pointer;
+    background: #505151;
+}
+
 .post-button-modal {
     color: #b1b1b1;
     font-size: 14px;
