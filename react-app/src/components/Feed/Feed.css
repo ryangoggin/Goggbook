@@ -112,6 +112,27 @@
     margin-bottom: 5px;
 }
 
+.create-post-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.user-profile-pic-button {
+    height: 40px;
+    width: 40px;
+
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.user-profile-pic-button:hover {
+    cursor: pointer;
+}
+
 .post-button {
     font-family: Arial, Helvetica, sans-serif;
     color: #a3a6ab;

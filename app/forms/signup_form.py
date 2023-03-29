@@ -29,11 +29,11 @@ def is_email(form, field):
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired(), Length(min=5, max=50), username_exists])
-    first_name = StringField('first_name', validators=[DataRequired(), Length(min=2, max=40)])
-    last_name = StringField('last_name', validators=[DataRequired(), Length(min=2, max=40)])
-    email = StringField('email', validators=[DataRequired(), Length(max=255), user_exists, is_email])
-    password = StringField('password', validators=[DataRequired(), Length(min=6, max=40)])
-    day = IntegerField('day', validators=[DataRequired()])
-    month = IntegerField('month', validators=[DataRequired()])
-    year = IntegerField('year', validators=[DataRequired()])
+    username = StringField('Username', validators=[DataRequired(), Length(min=5, max=50), username_exists])
+    first_name = StringField('First Name', validators=[DataRequired(), Length(min=2, max=40)])
+    last_name = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=40)])
+    email = StringField('Email', validators=[DataRequired(), Length(max=255), user_exists, is_email])
+    password = StringField('Password', validators=[DataRequired(), Length(min=6, max=40)])
+    day = IntegerField('Day', validators=[DataRequired()])
+    month = IntegerField('Month', validators=[DataRequired()])
+    year = IntegerField('Year', validators=[DataRequired()])

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
@@ -8,6 +9,7 @@ import SignupFormModal from "../SignupFormModal";
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory();
   const ulRef = useRef();
 
   const openMenu = () => {
@@ -19,7 +21,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (!ulRef.current?.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -29,9 +31,17 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const handleProfileClick = (e) => {
+    e.preventDefault();
+    history.push(`/${user.id}`);
+    closeMenu();
+  };
+
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push(`/`);
+    closeMenu();
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -46,9 +56,11 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <li className="dropdown-user-info">
-            <img className="small-user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile`}/>
-              {user.firstName} {user.lastName}
-              </li>
+              <button className="user-profile-button" onClick={handleProfileClick}>
+                <img className="small-user-profile-pic" src={user.profilePic} alt={`${user.firstName} ${user.lastName} Profile`}/>
+                {user.firstName} {user.lastName}
+              </button>
+            </li>
             <li>
 
             </li>

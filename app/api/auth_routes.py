@@ -15,7 +15,17 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            if field == "first_name":
+                errorMessages.append(f'Frist Name: {error}')
+            elif field == "last_name":
+                errorMessages.append(f'Last Name: {error}')
+            elif field == "username":
+                errorMessages.append(f'Username: {error}')
+            elif field == "email":
+                errorMessages.append(f'Email: {error}')
+            elif field == "password":
+                errorMessages.append(f'Password: {error}')
+
     return errorMessages
 
 

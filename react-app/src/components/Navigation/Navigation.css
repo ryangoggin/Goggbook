@@ -89,6 +89,27 @@
   margin-right: 8px;
 }
 
+.user-profile-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: white;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background: none;
+  border: 0px;
+  border-radius: 5px;
+  outline: none;
+
+  width: 100%;
+}
+
+.user-profile-button:hover {
+  cursor: pointer;
+}
+
 .logout-container {
   display: flex;
   justify-content: center;

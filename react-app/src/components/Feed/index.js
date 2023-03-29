@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PostItem from "../PostItem";
 import { getFeed } from "../../store/post";
 import { getFriends } from "../../store/friend";
@@ -12,6 +13,7 @@ function Feed() {
     const sessionUser = useSelector(state => state.session.user)
     const feedPosts = useSelector(state => state.posts);
     const [showMenu, setShowMenu] = useState(false);
+    const history = useHistory();
     const ulRef = useRef();
 
     const dispatch = useDispatch();
@@ -45,6 +47,11 @@ function Feed() {
         window.alert('Feeling/activity Feature Coming Soon...');
     }
 
+    const handleProfileClick = (e) => {
+        e.preventDefault();
+        history.push(`/${sessionUser.id}`);
+    };
+
     const closeMenu = () => setShowMenu(false);
 
     let feedPostsArr = [];
@@ -64,14 +71,18 @@ function Feed() {
         <div className='feed-container'>
             <div className="feed-left">
                 <div className="profile-info-container">
-                    <img className='profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
-                    <p className="profile-fullname">{sessionUser.firstName} {sessionUser.lastName}</p>
+                    <button className="user-profile-button" onClick={handleProfileClick}>
+                        <img className='profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                        <p className="profile-fullname">{sessionUser.firstName} {sessionUser.lastName}</p>
+                    </button>
                 </div>
             </div>
             <div className="feed-center">
                 <div className="create-post-container">
                     <div className="create-post-top">
-                    <img className='post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                    <button className="user-profile-pic-button" onClick={handleProfileClick}>
+                        <img className='create-post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                    </button>
                         <OpenModalButton
                             className="post-button"
                             buttonText={`What's on your mind, ${sessionUser.firstName}?`}
