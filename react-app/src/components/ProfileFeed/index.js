@@ -79,9 +79,9 @@ function ProfileFeed() {
     });
 
     function convertBirthday(birthdate) {
-        const year = birthdate.slice(12, 16);
-        let month = birthdate.slice(8, 11);
-        const day = birthdate.slice(5, 7);
+        const year = birthdate?.slice(12, 16);
+        let month = birthdate?.slice(8, 11);
+        const day = birthdate?.slice(5, 7);
 
         if (month === "Jan") {
             month = "January";
@@ -113,7 +113,7 @@ function ProfileFeed() {
     }
 
     const profileFriendsArr = Object.values(profileFriends);
-    const firstSixFriends = profileFriendsArr.slice(0, 6);
+    const firstSixFriends = profileFriendsArr?.slice(0, 6);
 
 
     return (
