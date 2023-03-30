@@ -11,7 +11,6 @@ import './PostItem.css'
 
 
 function PostItem({ post }) {
-    console.log("post inside PostItem START: ", post);
     const dispatch = useDispatch();
     const history = useHistory();
     // select data from the Redux store
@@ -62,8 +61,6 @@ function PostItem({ post }) {
     const postUser = allUsers[post.userId];
 
     if (!postUser) return null;
-
-    console.log("post inside PostItem END: ", post);
 
     // sort comments by post date
     commentsArr.sort(function(a,b){

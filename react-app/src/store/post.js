@@ -66,6 +66,17 @@ export const getFeed = () => async (dispatch) => {
     }
 }
 
+export const getProfileFeed = (id) => async dispatch => {
+  const res = await fetch(`/api/users/${id}/feed`);
+
+  if (res.ok) {
+    const posts = await res.json();
+    const postsArr = posts.posts;
+    dispatch(loadPosts(postsArr));
+    return postsArr;
+  }
+};
+
 export const createPost = (post) => async (dispatch) => {
     const resPost = await fetch(`/api/posts`, {
       method: "POST",

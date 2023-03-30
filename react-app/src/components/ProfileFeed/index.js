@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import PostItem from "../PostItem";
-import { getProfileUser, getProfileFriends, getProfilePosts } from "../../store/profile";
+import { getProfileFeed } from "../../store/post";
+import { getProfileUser, getProfileFriends } from "../../store/profile";
 import { getAllUsers } from "../../store/users";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
@@ -14,7 +15,7 @@ function ProfileFeed() {
     const sessionUser = useSelector(state => state.session.user);
     const profileUser = useSelector(state => state.profile.user);
     const profileFriends = useSelector(state => state.profile.friends);
-    const profileFeed = useSelector(state => state.profile.posts);
+    const profileFeed = useSelector(state => state.posts);
     const { userId } = useParams();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -40,7 +41,8 @@ function ProfileFeed() {
         dispatch(getAllUsers());
         dispatch(getProfileUser(userId));
         dispatch(getProfileFriends(userId));
-        dispatch(getProfilePosts(userId));
+        dispatch(getProfileFeed(userId));
+        // dispatch(getProfilePosts(userId));
     }, [dispatch, userId]);
 
     if (!profileFriends) return null;
