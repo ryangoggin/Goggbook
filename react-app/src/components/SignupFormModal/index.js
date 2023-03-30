@@ -110,7 +110,7 @@ function SignupFormModal() {
 						placeholder="Confirm password"
 						required
 					/>
-					<div className="birthday-container">
+					<div className="signup-birthday-container">
 						<div className="signup-dob-label">Birthday</div>
 						<div className="signup-dob">
 							<select id="month" value={month} onChange={(e) => setMonth(e.target.value)} className="signup-dob-select" required>
