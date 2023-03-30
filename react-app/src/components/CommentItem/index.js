@@ -76,7 +76,9 @@ function CommentItem({ comment }) {
                 </button>
                 <div className='comment-details'>
                     <div className="comment-content-container">
-                        <p className='comment-fullname'>{commentUser.firstName} {commentUser.lastName}</p>
+                        <button className='comment-fullname-button' onClick={handleProfileClick}>
+                            <p className='comment-fullname'>{commentUser.firstName} {commentUser.lastName}</p>
+                        </button>
                         <p className='comment-content'>{comment.content}</p>
                     </div>
                     <p className='comment-updated-at'>{convertUpdatedAt(comment.updatedAt)}</p>
