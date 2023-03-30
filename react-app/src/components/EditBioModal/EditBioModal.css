@@ -1,0 +1,25 @@
+.update-bio-form-container {
+    background-color: #242526;
+
+    width: 500px;
+    height: fit-content;
+    box-sizing: border-box;
+
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.update-bio {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    position: relative;
+    right: 15px;
+
+    display: flex;
+    justify-content: center;
+
+    width: 500px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #38393b;
+}

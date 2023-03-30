@@ -103,11 +103,11 @@ def update_user_bio():
     errors = {}
 
     if len(form.data["bio"]) > 150:
-            errors["bio"] = "Bios must be less than 2000 characters"
+            errors["bio"] = "Bios must be less than 150 characters"
             return jsonify({"errors": errors}), 400
 
     if form.validate_on_submit():
-        user.bio=form.data["bio"] or user.bio
+        user.bio=form.data["bio"] # cannot include "or user.bio" in order to allow for empty string bios
 
         db.session.commit()
         return user.to_dict()
