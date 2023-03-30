@@ -120,8 +120,8 @@ function ProfileFeed() {
         <div className='profile-feed-container'>
             <div className="profile-feed-left-bar">
                 <div className="profile-info-container">
-                    <img className='profile-pic' src={`${profileUser.profilePic}`} alt={`${profileUser.firstName} ${profileUser.lastName} Profile`} />
-                    <p className="profile-fullname">{profileUser.firstName} {profileUser.lastName}</p>
+                    <img className='profile-pic' src={`${profileUser?.profilePic}`} alt={`${profileUser?.firstName} ${profileUser?.lastName} Profile`} />
+                    <p className="profile-fullname">{profileUser?.firstName} {profileUser?.lastName}</p>
                 </div>
             </div>
             <div className="profile-feed-center">
@@ -130,17 +130,17 @@ function ProfileFeed() {
                     <div className="profile-feed-bottom-left">
                         <div className="profile-about">
                             <h3 className="intro">Intro</h3>
-                            {profileUser.bio !== "" &&
+                            {profileUser?.bio !== "" &&
                                 <div className="bio-container">
                                     <p className="bio">
-                                        {profileUser.bio}
+                                        {profileUser?.bio}
                                     </p>
                                 </div>
                             }
                             <div className="birthday-container">
                                 <i className="fa-solid fa-cake-candles"></i>
                                 <p className="birthday">
-                                    {convertBirthday(profileUser.birthdate)}
+                                    {convertBirthday(profileUser?.birthdate)}
                                 </p>
                             </div>
                         </div>
@@ -159,15 +159,15 @@ function ProfileFeed() {
                         </div>
                     </div>
                     <div className="profile-feed-bottom-right">
-                        { profileUser.id === sessionUser.id &&
+                        { profileUser?.id === sessionUser.id &&
                             <div className="create-post-container">
                                 <div className="create-post-top">
                                 <button className="user-profile-pic-button" onClick={handleCurrProfileClick}>
-                                    <img className='create-post-profile-pic' src={`${profileUser.profilePic}`} alt={`${profileUser.firstName} ${profileUser.lastName} Profile`} />
+                                    <img className='create-post-profile-pic' src={`${profileUser?.profilePic}`} alt={`${profileUser?.firstName} ${profileUser?.lastName} Profile`} />
                                 </button>
                                     <OpenModalButton
                                         className="post-button"
-                                        buttonText={`What's on your mind, ${profileUser.firstName}?`}
+                                        buttonText={`What's on your mind, ${profileUser?.firstName}?`}
                                         onItemClick={closeMenu}
                                         modalComponent={<PostFormModal />}
                                     />
