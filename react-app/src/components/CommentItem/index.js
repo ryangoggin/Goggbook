@@ -59,7 +59,11 @@ function CommentItem({ comment }) {
         } else if (timeDiffHr > 0) {
             return `${timeDiffHr}h`;
         } else {
-            return `${timeDiffMin}m`;
+            if (timeDiffMin < 0) {
+                return '0m'; // occasionally calculates as -1m, so set to 0m in those cases
+            } else {
+                return `${timeDiffMin}m`;
+            }
         }
     }
 

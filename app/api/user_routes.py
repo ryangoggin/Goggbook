@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Friend, Post
+from app.models import db, User, Friend, Post
+from app.forms import UserForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -82,3 +83,35 @@ def get_all_feed_posts(id):
     response = [post.to_dict() for post in posts]
 
     return {'posts': response }
+
+
+#update current user's bio
+@user_routes.route("/bio", methods=['PUT'])
+@login_required
+def update_user_bio():
+    '''
+    queries posts by profile user on GET requests
+    '''
+    user = User.query.get(current_user.id)
+
+    if user is None:
+        return jsonify({'error': 'User not found'}), 404
+
+    form = UserForm()
+    form['csrf_token'].data = request.cookies["csrf_token"]
+
+    errors = {}
+
+    if len(form.data["bio"]) > 150:
+            errors["bio"] = "Bios must be less than 2000 characters"
+            return jsonify({"errors": errors}), 400
+
+    if form.validate_on_submit():
+        user.bio=form.data["bio"] or user.bio
+
+        db.session.commit()
+        return user.to_dict()
+    return jsonify({"errors": form.errors}), 400
+
+
+#update a user's profile picture
