@@ -8,7 +8,7 @@ import { getAllUsers } from "../../store/users";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
 import ProfileTop from "../ProfileTop";
-import FriendItem from "../FriendItem";
+import ProfileFriendItem from "../ProfileFriendItem";
 import "./ProfileFeed.css";
 
 function ProfileFeed() {
@@ -150,7 +150,7 @@ function ProfileFeed() {
                             <div className="friends-container">
                                 {firstSixFriends.map((friend) => {
                                     return (
-                                        <FriendItem friend={friend}/>
+                                        <ProfileFriendItem friend={friend}/>
                                     );
                                 })}
                             </div>

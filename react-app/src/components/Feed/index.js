@@ -8,12 +8,14 @@ import { getAllUsers } from "../../store/users";
 import { clearProfile } from "../../store/profile";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
+import FeedFriendItem from "../FeedFriendItem";
 import "./Feed.css";
 
 function Feed() {
     // select data from the Redux store
     const sessionUser = useSelector(state => state.session.user)
     const feedPosts = useSelector(state => state.posts);
+    const friends = useSelector(state => state.friends);
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory();
     const ulRef = useRef();
@@ -58,8 +60,14 @@ function Feed() {
 
     const closeMenu = () => setShowMenu(false);
 
-    let feedPostsArr = [];
+    let friendsArr = [];
+    if (!friends) {
+        return null;
+    } else {
+        friendsArr = Object.values(friends);
+    }
 
+    let feedPostsArr = [];
     if (!feedPosts) {
         return null;
     } else {
@@ -125,7 +133,14 @@ function Feed() {
                 })}
             </div>
             <div className="feed-right">
-                <p>Right placeholder</p>
+                <div className="contacts">
+                    <h3 className="contacts-text">Contacts</h3>
+                </div>
+                {friendsArr.map((friend) => {
+                    return (
+                        <FeedFriendItem friend={friend}/>
+                    );
+                })}
             </div>
         </div>
     );
