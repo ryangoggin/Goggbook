@@ -33,7 +33,7 @@ function ProfileButton({ user }) {
 
   const handleProfileClick = (e) => {
     e.preventDefault();
-    history.push(`/${user.id}`);
+    history.push(`/users/${user.id}`);
     closeMenu();
   };
 

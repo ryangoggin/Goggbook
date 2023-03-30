@@ -55,7 +55,7 @@ function Feed() {
 
     const handleCurrProfileClick = (e) => {
         e.preventDefault();
-        history.push(`/${sessionUser.id}`);
+        history.push(`/users/${sessionUser.id}`);
     };
 
     const closeMenu = () => setShowMenu(false);
