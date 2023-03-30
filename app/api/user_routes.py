@@ -53,14 +53,12 @@ def user_friends(id):
 @login_required
 def current_user_friends():
     """
-    Query for a user's friends by user id and return their user info as a dictionary.
-    This is for the current user's feed, so the current user is included in this.
+    Query for the current user's friends by user id and return the freinds' user info as a dictionary.
     """
     friends = Friend.query.filter(Friend.user_id == current_user.id)
     userFriendLst = []
     for friend in friends:
         userFriendLst.append(friend.friend_id)
-    userFriendLst.append(current_user.id)
 
     friendUsers = User.query.filter(User.id.in_(userFriendLst)).all()
     response = [user.to_dict() for user in friendUsers]

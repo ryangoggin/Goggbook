@@ -1,0 +1,50 @@
+.feed-right-friend-container {
+    display: flex;
+    align-items: center;
+
+    padding: 0px 8px 0px;
+    margin: 0px;
+
+    width: 248px;
+    height: 44px;
+}
+
+.feed-right-friend-container:hover {
+    background-color: #3a3b3c;
+    border-radius: 10px;
+}
+
+.feed-right-friend-profile-button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    background: none;
+    border: 0;
+    padding: 0;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+}
+
+.feed-right-friend-profile-button:hover {
+    cursor: pointer;
+}
+
+.feed-right-friend-profile-pic {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.feed-right-friend-profile-fullname {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+}

@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "./FriendItem.css";
+import "./ProfileFriendItem.css";
 
-function FriendItem({ friend }) {
+function ProfileFriendItem({ friend }) {
     const history = useHistory();
 
     const handleFriendProfileClick = (e) => {
@@ -20,4 +20,4 @@ function FriendItem({ friend }) {
     );
 }
 
-export default FriendItem;
+export default ProfileFriendItem;
