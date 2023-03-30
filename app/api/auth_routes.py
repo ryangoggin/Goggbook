@@ -16,15 +16,27 @@ def validation_errors_to_error_messages(validation_errors):
     for field in validation_errors:
         for error in validation_errors[field]:
             if field == "first_name":
-                errorMessages.append(f'Frist Name: {error}')
+                if error == "Field must be between 2 and 40 characters long.":
+                    errorMessages.append('First name must be between 2 and 40 characters long.')
+                else:
+                    errorMessages.append(f'First Name: {error}')
             elif field == "last_name":
-                errorMessages.append(f'Last Name: {error}')
+                if error == "Field must be between 2 and 40 characters long.":
+                    errorMessages.append('Last name must be between 2 and 40 characters long.')
+                else:
+                    errorMessages.append(f'Last Name: {error}')
             elif field == "username":
-                errorMessages.append(f'Username: {error}')
+                if error == "Field must be between 5 and 50 characters long.":
+                    errorMessages.append('Username must be between 5 and 50 characters long.')
+                else:
+                    errorMessages.append(f'{error}')
             elif field == "email":
-                errorMessages.append(f'Email: {error}')
+                errorMessages.append(f'{error}')
             elif field == "password":
-                errorMessages.append(f'Password: {error}')
+                if error == "Field must be between 6 and 40 characters long.":
+                    errorMessages.append('Password must be between 6 and 40 characters long.')
+                else:
+                    errorMessages.append(f'Password: {error}')
 
     return errorMessages
 
