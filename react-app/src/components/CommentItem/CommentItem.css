@@ -8,9 +8,26 @@
     display: flex;
 }
 
-.comment-profile-pic {
-    width: 32px;
+.comment-profile-pic-button {
     height: 32px;
+    width: 32px;
+
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.comment-profile-pic-button:hover {
+    cursor: pointer;
+}
+
+.comment-profile-pic {
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     margin-right: 5px;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import EditCommentModal from '../EditCommentModal';
 import DeleteCommentModal from '../DeleteCommentModal';
@@ -8,6 +9,7 @@ import './CommentItem.css'
 
 function CommentItem({ comment }) {
     // select data from the Redux store
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const friendUsers = useSelector(state => state.friends);
 
@@ -61,10 +63,17 @@ function CommentItem({ comment }) {
         }
     }
 
+    const handleProfileClick = (e) => {
+        e.preventDefault();
+        history.push(`/${comment.userId}`);
+    };
+
     return (
         <div className='comment-item'>
             <div className='comment-left'>
-                <img className='comment-profile-pic' src={`${commentUser.profilePic}`} alt={`${commentUser.firstName} ${commentUser.lastName} Profile`} />
+                <button className='comment-profile-pic-button' onClick={handleProfileClick}>
+                    <img className='comment-profile-pic' src={`${commentUser.profilePic}`} alt={`${commentUser.firstName} ${commentUser.lastName} Profile`} />
+                </button>
                 <div className='comment-details'>
                     <div className="comment-content-container">
                         <p className='comment-fullname'>{commentUser.firstName} {commentUser.lastName}</p>
