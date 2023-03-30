@@ -121,7 +121,7 @@ function PostItem({ post }) {
 
     const handleProfileClick = (e) => {
         e.preventDefault();
-        history.push(`/${post.userId}`);
+        history.push(`/users/${post.userId}`);
     };
 
     return (

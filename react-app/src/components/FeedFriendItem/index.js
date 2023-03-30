@@ -7,7 +7,7 @@ function FeedFriendItem({ friend }) {
 
     const handleFriendProfileClick = (e) => {
         e.preventDefault();
-        history.push(`/${friend.id}`);
+        history.push(`/users/${friend.id}`);
     };
 
     return (

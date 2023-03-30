@@ -65,7 +65,7 @@ function CommentItem({ comment }) {
 
     const handleProfileClick = (e) => {
         e.preventDefault();
-        history.push(`/${comment.userId}`);
+        history.push(`/users/${comment.userId}`);
     };
 
     return (
