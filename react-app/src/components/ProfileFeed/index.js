@@ -7,6 +7,7 @@ import { getProfileUser, getProfileFriends } from "../../store/profile";
 import { getAllUsers } from "../../store/users";
 import OpenModalButton from "../OpenModalButton";
 import PostFormModal from "../PostFormModal";
+import EditBioModal from "../EditBioModal";
 import ProfileTop from "../ProfileTop";
 import ProfileFriendItem from "../ProfileFriendItem";
 import "./ProfileFeed.css";
@@ -131,11 +132,27 @@ function ProfileFeed() {
                     <div className="profile-feed-bottom-left">
                         <div className="profile-about">
                             <h3 className="intro">Intro</h3>
+                            {(profileUser?.bio === "" && profileUser?.id === sessionUser.id) &&
+                                <OpenModalButton
+                                className="add-bio-button"
+                                buttonText="Add bio"
+                                onItemClick={closeMenu}
+                                modalComponent={<EditBioModal sessionUser={sessionUser} />}
+                                />
+                            }
                             {profileUser?.bio !== "" &&
                                 <div className="bio-container">
                                     <p className="bio">
                                         {profileUser?.bio}
                                     </p>
+                                    {profileUser?.id === sessionUser.id &&
+                                        <OpenModalButton
+                                        className="edit-button"
+                                        buttonText={<i className="fa-solid fa-pencil"></i>}
+                                        onItemClick={closeMenu}
+                                        modalComponent={<EditBioModal sessionUser={sessionUser} />}
+                                        />
+                                    }
                                 </div>
                             }
                             <div className="birthday-container">
@@ -150,7 +167,9 @@ function ProfileFeed() {
                             <div className="friends-container">
                                 {firstSixFriends.map((friend) => {
                                     return (
-                                        <ProfileFriendItem friend={friend}/>
+                                        <div key={`friend${friend.id}`}>
+                                            <ProfileFriendItem friend={friend}/>
+                                        </div>
                                     );
                                 })}
                             </div>
@@ -160,9 +179,9 @@ function ProfileFeed() {
                         { profileUser?.id === sessionUser.id &&
                             <div className="create-post-container">
                                 <div className="create-post-top">
-                                <button className="user-profile-pic-button" onClick={handleCurrProfileClick}>
-                                    <img className='create-post-profile-pic' src={`${profileUser?.profilePic}`} alt={`${profileUser?.firstName} ${profileUser?.lastName} Profile`} />
-                                </button>
+                                    <button className="user-profile-pic-button" onClick={handleCurrProfileClick}>
+                                        <img className='create-post-profile-pic' src={`${profileUser?.profilePic}`} alt={`${profileUser?.firstName} ${profileUser?.lastName} Profile`} />
+                                    </button>
                                     <OpenModalButton
                                         className="post-button"
                                         buttonText={`What's on your mind, ${profileUser?.firstName}?`}

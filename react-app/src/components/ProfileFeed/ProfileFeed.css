@@ -3,6 +3,10 @@
         width: 425px;
     }
 
+    .add-bio-button, .bio-container {
+        width: 393px;
+    }
+
     .profile-friends {
         width: 425px;
     }
@@ -15,6 +19,10 @@
 @media (max-width: 980px) {
     .profile-about {
         width: 360px;
+    }
+
+    .add-bio-button, .bio-container {
+        width: 328px;
     }
 
     .profile-friends {
@@ -122,15 +130,45 @@
 .bio-container{
     display: flex;
     justify-content: center;
-
-    width: 100%;
+    align-items: center;
 
     border-bottom: 1px solid #38393b;
 }
 
+.add-bio-button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background: #3a3b3c;
+
+    padding: 0px 12px 0px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+
+    height: 36px;
+
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+}
+
+.add-bio-button:hover {
+    cursor: pointer;
+    background: #5a5c5e;
+}
+
 .bio {
+    display: flex;
+    justify-content: center;
+
+    word-break: break-word;
+
     padding: 16px 0px 16px;
     margin: 0;
+}
+
+.edit-button {
+    height: 30px;
 }
 
 .birthday-container {

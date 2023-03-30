@@ -2,6 +2,7 @@
 const LOAD_PROFILE_USER = 'profile/LOAD_PROFILE_USER';
 const LOAD_PROFILE_FRIENDS = 'profile/LOAD_PROFILE_FRIENDS';
 const CLEAR_PROFILE = 'profile/CLEAR_PROFILE';
+const EDIT_PROFILE_USER = 'profile/EDIT_PROFILE';
 
 
 // POJO action creators:
@@ -17,6 +18,11 @@ const loadProfileFriends = friends => ({
 
 export const clearProfile = () => ({
     type: CLEAR_PROFILE
+});
+
+const editProfileUser = user => ({
+    type: EDIT_PROFILE_USER,
+    user
 });
 
 
@@ -41,6 +47,20 @@ export const getProfileFriends = (id) => async dispatch => {
   }
 };
 
+export const updateProfileBio = (user) => async (dispatch) => {
+    const res = await fetch(`/api/users/bio`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    });
+
+    if (res.ok) {
+      const updatedUser = await res.json();
+      dispatch(editProfileUser(updatedUser));
+      return updatedUser;
+    }
+  }
+
 const initialState = { user: null, friends: null };
 
 const profileReducer = (state = initialState, action) => {
@@ -61,6 +81,10 @@ const profileReducer = (state = initialState, action) => {
             return newState;
         case CLEAR_PROFILE:
             newState = { user: null, friends: null };
+            return newState;
+        case EDIT_PROFILE_USER:
+            newState = {...state};
+            newState.user = action.user;
             return newState;
         default:
             return state;
