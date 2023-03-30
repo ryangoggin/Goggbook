@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import LoginFormPage from '../LoginFormPage';
+import LoginFooter from '../LoginFooter';
 import Feed from '../Feed';
 import "./Homepage.css";
 import Navigation from '../Navigation';
@@ -27,7 +28,7 @@ const Homepage = () => {
                     </div>
                 </div>
                 <div className='logged-out-homepage-bottom'>
-
+                    <LoginFooter />
                 </div>
             </div>
           )}
