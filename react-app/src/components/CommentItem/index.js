@@ -11,7 +11,7 @@ function CommentItem({ comment }) {
     // select data from the Redux store
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
-    const friendUsers = useSelector(state => state.friends);
+    const allUsers = useSelector(state => state.users);
 
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -33,9 +33,9 @@ function CommentItem({ comment }) {
     const closeMenu = () => setShowMenu(false);
 
     if (!sessionUser) return null;
-    if (!friendUsers) return null;
+    if (!allUsers) return null;
 
-    const commentUser = friendUsers[comment.userId];
+    const commentUser = allUsers[comment.userId];
 
     if (!commentUser) return null;
 
