@@ -212,13 +212,22 @@ function ProfileFeed() {
                                 </div>
                             </div>
                         }
-                        {profileFeedArr.map((post) => {
-                            return (
-                                <div key={`profile-post${post.id}`} className='post-item-container'>
-                                    <PostItem post={post} />
-                                </div>
-                            );
-                        })}
+                        {profileFeedArr.length > 0 ?
+                            // console.log("profileFeedArr length", profileFeedArr.length)
+                            (profileFeedArr.map((post) => {
+                                return (
+                                    <div key={`profile-post${post.id}`} className='post-item-container'>
+                                        <PostItem post={post} />
+                                    </div>
+                                );
+                            })
+                        ):(
+                            <div className='no-posts-container'>
+                                <p className="no-posts-text">
+                                    No posts yet!
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

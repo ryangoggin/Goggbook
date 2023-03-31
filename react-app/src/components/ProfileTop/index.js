@@ -1,10 +1,16 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './ProfileTop.css'
 
 
 function ProfileTop({ profileUser, profileFriends }) {
     let friendsArr = [];
     if (profileFriends) friendsArr = Object.values(profileFriends);
+
+    const handleFriends = (e) => {
+        e.preventDefault();
+        window.alert('Friends section not available yet...');
+    }
 
     return (
         <div className='profile-top-container'>
@@ -18,16 +24,16 @@ function ProfileTop({ profileUser, profileFriends }) {
                 </div>
             </div>
             <div className='profile-top-lower'>
-                <div className='profile-posts-section'>
+                <NavLink className="profile-posts" activeClassName="active-posts" exact to={`/users/${profileUser.id}`}>
                     <p className='posts-text'>
                         Posts
                     </p>
-                </div>
-                <div className='profile-friends-section'>
+                </NavLink>
+                <button className='profile-section-button' onClick={handleFriends}>
                     <p className='friends-text'>
                         Friends
                     </p>
-                </div>
+                </button>
             </div>
         </div>
     );
