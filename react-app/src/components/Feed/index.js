@@ -142,119 +142,127 @@ function Feed() {
     }
 
     return (
-        <div className='feed-container'>
-            <div className="feed-left">
-                <div className="profile-info-container">
-                    <button className="user-profile-button" onClick={handleCurrProfileClick}>
-                        <img className='profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
-                        <p className="profile-fullname">{sessionUser.firstName} {sessionUser.lastName}</p>
-                    </button>
-                </div>
-                <div className="link-button-container">
-                    <button className="user-profile-button" onClick={handleLinkedIn}>
-                        <div className="linkedin-container">
-                            <i className="fa-brands fa-linkedin"></i>
-                        </div>
-                        <p className="profile-fullname">Ryan's LinkedIn</p>
-                    </button>
-                </div>
-                <div className="link-button-container">
-                    <button className="user-profile-button" onClick={handleGithub}>
-                        <div className="github-container">
-                            <i className="fa-brands fa-github"></i>
-                        </div>
-                        <p className="profile-fullname">Ryan's Github</p>
-                    </button>
-                </div>
-                <div className="link-button-container">
-                    <button className="user-profile-button" onClick={handleGoggInn}>
-                        <div className="gogginn-container">
-                            <img className="gogginn-logo" src="https://goggbook-aws.s3.amazonaws.com/mug-hot-solid.png" alt="GoggInn Logo" />
-                        </div>
-                        <p className="profile-fullname">GoggInn</p>
-                    </button>
-                </div>
-                <div className="link-button-container">
-                    <button className="user-profile-button" onClick={handlePixelPal}>
-                        <img className="pixel-pal-logo" src="https://goggbook-aws.s3.amazonaws.com/pixel-pal-logo.png" alt="PixelPal Logo" />
-                        <p className="profile-fullname">PixelPal</p>
-                    </button>
-                </div>
-            </div>
-            <div className="feed-center">
-                <div className="create-post-container">
-                    <div className="create-post-top">
-                    <button className="user-profile-pic-button" onClick={handleCurrProfileClick}>
-                        <img className='create-post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
-                    </button>
-                        <OpenModalButton
-                            className="post-button"
-                            buttonText={`What's on your mind, ${sessionUser.firstName}?`}
-                            onItemClick={closeMenu}
-                            modalComponent={<PostFormModal />}
-                        />
-                    </div>
-                    <div className="create-post-bottom">
-                        <button className="video-button" onClick={handleLiveVideo}>{<>
-                            <i className="fa-solid fa-video"></i>
-                            <p className="video-text">Live video</p>
-                            </>}
+        <>
+            <OpenModalButton
+                className="bottom-righ-post-button"
+                buttonText={<i className="fa-solid fa-pen-to-square"></i>}
+                onItemClick={closeMenu}
+                modalComponent={<PostFormModal />}
+            />
+            <div className='feed-container'>
+                <div className="feed-left">
+                    <div className="profile-info-container">
+                        <button className="user-profile-button" onClick={handleCurrProfileClick}>
+                            <img className='profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                            <p className="profile-fullname">{sessionUser.firstName} {sessionUser.lastName}</p>
                         </button>
-                        <OpenModalButton
-                            className="photo-button"
-                            buttonText={<>
-                                <i className="fa-regular fa-image"></i>
-                                <p className="photo-text">Photo</p>
-                            </>}
-                            onItemClick={closeMenu}
-                            modalComponent={<PostFormModal />}
-                        />
-                        <button className="feeling-button" onClick={handleFeelingActivity}>{<>
-                            <i className="fa-regular fa-face-laugh"></i>
-                            <p className="feeling-text">Feeling/activity</p>
-                            </>}
+                    </div>
+                    <div className="link-button-container">
+                        <button className="user-profile-button" onClick={handleLinkedIn}>
+                            <div className="linkedin-container">
+                                <i className="fa-brands fa-linkedin"></i>
+                            </div>
+                            <p className="profile-fullname">Ryan's LinkedIn</p>
+                        </button>
+                    </div>
+                    <div className="link-button-container">
+                        <button className="user-profile-button" onClick={handleGithub}>
+                            <div className="github-container">
+                                <i className="fa-brands fa-github"></i>
+                            </div>
+                            <p className="profile-fullname">Ryan's Github</p>
+                        </button>
+                    </div>
+                    <div className="link-button-container">
+                        <button className="user-profile-button" onClick={handleGoggInn}>
+                            <div className="gogginn-container">
+                                <img className="gogginn-logo" src="https://goggbook-aws.s3.amazonaws.com/mug-hot-solid.png" alt="GoggInn Logo" />
+                            </div>
+                            <p className="profile-fullname">GoggInn</p>
+                        </button>
+                    </div>
+                    <div className="link-button-container">
+                        <button className="user-profile-button" onClick={handlePixelPal}>
+                            <img className="pixel-pal-logo" src="https://goggbook-aws.s3.amazonaws.com/pixel-pal-logo.png" alt="PixelPal Logo" />
+                            <p className="profile-fullname">PixelPal</p>
                         </button>
                     </div>
                 </div>
-                {feedPostsArr.map((post) => {
-                    return (
-                        <div key={`post${post.id}`} className='post-item-container'>
-                            <PostItem post={post} />
+                <div className="feed-center">
+                    <div className="create-post-container">
+                        <div className="create-post-top">
+                            <button className="user-profile-pic-button" onClick={handleCurrProfileClick}>
+                                <img className='create-post-profile-pic' src={`${sessionUser.profilePic}`} alt={`${sessionUser.firstName} ${sessionUser.lastName} Profile`} />
+                            </button>
+                            <OpenModalButton
+                                className="post-button"
+                                buttonText={`What's on your mind, ${sessionUser.firstName}?`}
+                                onItemClick={closeMenu}
+                                modalComponent={<PostFormModal />}
+                            />
                         </div>
-                    );
-                })}
-            </div>
-            <div className="feed-right">
-                <div className="birthdays">
-                    <h3 className="birthdays-text">Birthdays</h3>
+                        <div className="create-post-bottom">
+                            <button className="video-button" onClick={handleLiveVideo}>{<>
+                                <i className="fa-solid fa-video"></i>
+                                <p className="video-text">Live video</p>
+                                </>}
+                            </button>
+                            <OpenModalButton
+                                className="photo-button"
+                                buttonText={<>
+                                    <i className="fa-regular fa-image"></i>
+                                    <p className="photo-text">Photo</p>
+                                </>}
+                                onItemClick={closeMenu}
+                                modalComponent={<PostFormModal />}
+                            />
+                            <button className="feeling-button" onClick={handleFeelingActivity}>{<>
+                                <i className="fa-regular fa-face-laugh"></i>
+                                <p className="feeling-text">Feeling/activity</p>
+                                </>}
+                            </button>
+                        </div>
+                    </div>
+                    {feedPostsArr.map((post) => {
+                        return (
+                            <div key={`post${post.id}`} className='post-item-container'>
+                                <PostItem post={post} />
+                            </div>
+                        );
+                    })}
                 </div>
-                <div className="birthday-details">
-                    <i class="fa-solid fa-gift"></i>
-                    {friendBirthdaysArr.length > 0 ?
-                        friendBirthdaysArr.length === 1 ? (
-                                <p className="birthday-details-text">
-                                    {friendBirthdaysArr[0].firstName} {friendBirthdaysArr[0].lastName} has a birthday today.
-                                </p>
+                <div className="feed-right">
+                    <div className="birthdays">
+                        <h3 className="birthdays-text">Birthdays</h3>
+                    </div>
+                    <div className="birthday-details">
+                        <i class="fa-solid fa-gift"></i>
+                        {friendBirthdaysArr.length > 0 ?
+                            friendBirthdaysArr.length === 1 ? (
+                                    <p className="birthday-details-text">
+                                        {friendBirthdaysArr[0].firstName} {friendBirthdaysArr[0].lastName} has a birthday today.
+                                    </p>
+                                ):(
+                                    <p className="birthday-details-text">
+                                        {friendBirthdaysArr[0].firstName} {friendBirthdaysArr[0].lastName} and {friendBirthdaysArr.length - 1} others have birthdays today.
+                                    </p>
                             ):(
-                                <p className="birthday-details-text">
-                                    {friendBirthdaysArr[0].firstName} {friendBirthdaysArr[0].lastName} and {friendBirthdaysArr.length - 1} others have birthdays today.
-                                </p>
-                        ):(
-                        <p className="birthday-details-text">There are no birthdays today.</p>
-                    )}
+                            <p className="birthday-details-text">There are no birthdays today.</p>
+                        )}
+                    </div>
+                    <div className="contacts">
+                        <h3 className="contacts-text">Contacts</h3>
+                    </div>
+                    {friendsArr.map((friend) => {
+                        return (
+                            <div key={`friend item#${friend.id}`}>
+                            <FeedFriendItem friend={friend}/>
+                            </div>
+                        );
+                    })}
                 </div>
-                <div className="contacts">
-                    <h3 className="contacts-text">Contacts</h3>
-                </div>
-                {friendsArr.map((friend) => {
-                    return (
-                        <div key={`friend item#${friend.id}`}>
-                        <FeedFriendItem friend={friend}/>
-                        </div>
-                    );
-                })}
             </div>
-        </div>
+        </>
     );
 }
 
