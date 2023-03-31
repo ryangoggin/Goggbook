@@ -135,10 +135,10 @@ function Feed() {
         }
     }
 
-    const friendBrithdaysArr = [];
+    const friendBirthdaysArr = [];
     for (let friend of friendsArr) {
         let friendBirthday = friend.birthdate;
-        if (birthdayToday(friendBirthday)) friendBrithdaysArr.push(friend);
+        if (birthdayToday(friendBirthday)) friendBirthdaysArr.push(friend);
     }
 
     return (
@@ -176,7 +176,7 @@ function Feed() {
                 </div>
                 <div className="link-button-container">
                     <button className="user-profile-button" onClick={handlePixelPal}>
-                        <img className="pixel-pal-logo" src="https://goggbook-aws.s3.amazonaws.com/pixel-pal-logo.png" />
+                        <img className="pixel-pal-logo" src="https://goggbook-aws.s3.amazonaws.com/pixel-pal-logo.png" alt="PixelPal Logo" />
                         <p className="profile-fullname">PixelPal</p>
                     </button>
                 </div>
@@ -230,14 +230,14 @@ function Feed() {
                 </div>
                 <div className="birthday-details">
                     <i class="fa-solid fa-gift"></i>
-                    {friendBrithdaysArr.length > 0 ?
-                        friendBrithdaysArr.length === 1 ? (
+                    {friendBirthdaysArr.length > 0 ?
+                        friendBirthdaysArr.length === 1 ? (
                                 <p className="birthday-details-text">
-                                    {friendBrithdaysArr[0].firstName} {friendBrithdaysArr[0].lastName} has a birthday today.
+                                    {friendBirthdaysArr[0].firstName} {friendBirthdaysArr[0].lastName} has a birthday today.
                                 </p>
                             ):(
                                 <p className="birthday-details-text">
-                                    {friendBrithdaysArr[0].firstName} {friendBrithdaysArr[0].lastName} and {friendBrithdaysArr.length - 1} others have birthdays today.
+                                    {friendBirthdaysArr[0].firstName} {friendBirthdaysArr[0].lastName} and {friendBirthdaysArr.length - 1} others have birthdays today.
                                 </p>
                         ):(
                         <p className="birthday-details-text">There are no birthdays today.</p>
@@ -248,7 +248,9 @@ function Feed() {
                 </div>
                 {friendsArr.map((friend) => {
                     return (
+                        <div key={`friend item#${friend.id}`}>
                         <FeedFriendItem friend={friend}/>
+                        </div>
                     );
                 })}
             </div>
