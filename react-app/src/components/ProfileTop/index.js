@@ -24,7 +24,7 @@ function ProfileTop({ profileUser, profileFriends }) {
                 </div>
             </div>
             <div className='profile-top-lower'>
-                <NavLink className="profile-posts" activeClassName="active-posts" exact to={`/users/${profileUser.id}`}>
+                <NavLink className="profile-posts" activeClassName="active-posts" exact to={`/users/${profileUser?.id}`}>
                     <p className='posts-text'>
                         Posts
                     </p>
