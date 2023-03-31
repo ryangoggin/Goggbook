@@ -104,6 +104,23 @@
     margin: 8px;
 }
 
+.no-posts-container {
+    display: flex;
+    justify-content: center;
+
+    background-color: #242526;
+    width: 500px;
+    box-sizing: border-box;
+    padding: 12px 16px 10px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+}
+
+.no-posts-text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
 .profile-feed-bottom-left {
     margin: 8px;
 }

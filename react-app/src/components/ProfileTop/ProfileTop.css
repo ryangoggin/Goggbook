@@ -72,8 +72,43 @@
     justify-content: flex-start;
 }
 
+.profile-posts {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.profile-section-button {
+    color: #b0b3b8;
+    background: none;
+    border-left: solid 3px rgba(255, 255, 255, 0);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px 6px 0px;
+}
+
+.profile-section-button:hover {
+    cursor: pointer;
+    background: #3a3b3c;
+
+    height: 60px;
+
+    box-sizing: border-box;
+    border: solid 3px #242526;
+    border-radius: 10px;
+}
+
 .posts-text, .friends-text {
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     font-size: 15px;
 
     height: 60px;
@@ -87,9 +122,13 @@
 
 .posts-text {
     color: #2e89ff;
+    box-sizing: border-box;
     border-bottom: solid 3px #2e89ff;
 }
 
 .friends-text {
     color: #b0b3b8;
+
+    position: relative;
+    bottom: 2px;
 }

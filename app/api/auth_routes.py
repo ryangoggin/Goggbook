@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, Friend
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -96,7 +96,25 @@ def sign_up():
             bio="",
             profile_pic="https://goggbook-aws.s3.amazonaws.com/Demo-prof-pic.jpg"
         )
+
         db.session.add(user)
+
+        # now add Demo as a friend:
+        db.session.flush()
+        db.session.refresh(user) # makes it so user.id is accessible
+
+        friend1 = Friend(
+            user_id = user.id,
+            friend_id = 1
+        )
+
+        friend2 = Friend(
+            user_id = 1,
+            friend_id = user.id
+        )
+
+        db.session.add(friend1)
+        db.session.add(friend2)
         db.session.commit()
         login_user(user)
         return user.to_dict()
