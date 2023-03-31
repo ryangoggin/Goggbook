@@ -1,3 +1,15 @@
+@media (min-width: 1400px) {
+  .nav-center {
+    width: 760px
+  }
+}
+
+@media (max-width: 1400px) {
+  .nav-center {
+    width: 580px
+  }
+}
+
 .profile-dropdown {
   position: absolute;
 }
@@ -40,7 +52,6 @@
 .nav-center {
   display: flex;
   justify-content: space-between;
-  width: 580px
 }
 
 .nav-home.active-home {
