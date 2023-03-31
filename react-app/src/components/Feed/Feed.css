@@ -128,7 +128,57 @@
     height: 100vh;
 }
 
+.birthdays {
+    display: flex;
+    align-items: center;
+}
+
+.birthday-details {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px 8px 0px;
+
+    width: 248px;
+}
+
+.birthday-details:hover {
+    cursor: pointer;
+    background-color: #3a3b3c;
+}
+
+.fa-solid.fa-gift {
+    color: #aaaeb2;
+    position: relative;
+    bottom: 1px;
+    margin-right: 8px;
+}
+
+.birthday-details-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+
+    margin: 12px 0px 12px;
+
+    width: 210px;
+}
+
 .contacts-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: #aaaeb2;
+    padding-top: 16px;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    border-top: 1px solid #3e4042;
+
+    width: 248px;
+}
+
+.birthdays-text {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     color: #aaaeb2;
@@ -157,8 +207,11 @@
 }
 
 .create-post-profile-pic {
-    width: 40px;
-    height: 40px;
+    position: relative;
+    bottom: 2px;
+    right: 2px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     margin: 0;
 }
