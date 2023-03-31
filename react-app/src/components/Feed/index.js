@@ -95,6 +95,52 @@ function Feed() {
         return new Date(b.updatedAt) - new Date(a.updatedAt);
     });
 
+    function birthdayToday(birthdate) {
+        const todayMonth = new Date().getMonth();
+        const todayDate = new Date().getDate();
+
+        let month = birthdate?.slice(8, 11);
+        const day = birthdate?.slice(5, 7);
+
+        if (month === "Jan") {
+            month = 0;
+        } else if (month === "Feb") {
+            month = 1;
+        } else if (month === "Mar") {
+            month = 2;
+        } else if (month === "Apr") {
+            month = 3;
+        } else if (month === "May") {
+            month = 4;
+        } else if (month === "Jun") {
+            month = 5;
+        } else if (month === "Jul") {
+            month = 6;
+        } else if (month === "Aug") {
+            month = 7;
+        } else if (month === "Sep") {
+            month = 8;
+        } else if (month === "Oct") {
+            month = 9;
+        } else if (month === "Nov") {
+            month = 10;
+        } else if (month === "Dec") {
+            month = 11;
+        }
+
+        if (todayDate === +day && todayMonth === month) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const friendBrithdaysArr = [];
+    for (let friend of friendsArr) {
+        let friendBirthday = friend.birthdate;
+        if (birthdayToday(friendBirthday)) friendBrithdaysArr.push(friend);
+    }
+
     return (
         <div className='feed-container'>
             <div className="feed-left">
@@ -179,6 +225,24 @@ function Feed() {
                 })}
             </div>
             <div className="feed-right">
+                <div className="birthdays">
+                    <h3 className="birthdays-text">Birthdays</h3>
+                </div>
+                <div className="birthday-details">
+                    <i class="fa-solid fa-gift"></i>
+                    {friendBrithdaysArr.length > 0 ?
+                        friendBrithdaysArr.length === 1 ? (
+                                <p className="birthday-details-text">
+                                    {friendBrithdaysArr[0].firstName} {friendBrithdaysArr[0].lastName} has a birthday today.
+                                </p>
+                            ):(
+                                <p className="birthday-details-text">
+                                    {friendBrithdaysArr[0].firstName} {friendBrithdaysArr[0].lastName} and {friendBrithdaysArr.length - 1} others have birthdays today.
+                                </p>
+                        ):(
+                        <p className="birthday-details-text">There are no birthdays today.</p>
+                    )}
+                </div>
                 <div className="contacts">
                     <h3 className="contacts-text">Contacts</h3>
                 </div>

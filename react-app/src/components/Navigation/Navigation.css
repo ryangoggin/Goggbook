@@ -32,6 +32,73 @@
   border-radius: 50%;
 }
 
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  width: 580px
+}
+
+.nav-home.active-home {
+  color: #2374e1;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+  border-bottom: 3px solid #2374e1;
+}
+
+.nav-home.active-home:hover {
+  background: none;
+  border-radius: 0px;
+  border-bottom: 3px solid #2374e1;
+}
+
+.nav-home {
+  color: #b0b3b8;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+}
+
+.nav-home:hover {
+  cursor: pointer;
+  background: #3a3b3c;
+  box-sizing: border-box;
+  border: solid 3px #242526;
+  border-radius: 10px;
+}
+
+.nav-button {
+  color: #b0b3b8;
+  background: none;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+}
+
+.nav-button:hover {
+  cursor: pointer;
+  background: #3a3b3c;
+  box-sizing: border-box;
+  border: solid 3px #242526;
+  border-radius: 10px;
+}
+
+.fa-solid.fa-house, .fa-regular.fa-circle-play, .fa-solid.fa-shop, .fa-solid.fa-users, .fa-solid.fa-gamepad {
+  font-size: 24px;
+}
+
 .nav-right {
   display: flex;
   align-items: center;
