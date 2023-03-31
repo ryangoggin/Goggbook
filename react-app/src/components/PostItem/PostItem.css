@@ -1,3 +1,17 @@
+@media (min-width: 1400px) {
+    .post-pic {
+        width: 680px;
+        height: 680px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .post-pic {
+        width: 500px;
+        height: 500px;
+    }
+}
+
 .post-item {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
@@ -84,8 +98,6 @@
 }
 
 .post-pic {
-    width: 500px;
-    height: 500px;
     object-fit: cover;
 }
 

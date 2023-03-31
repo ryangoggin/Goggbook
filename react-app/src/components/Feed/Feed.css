@@ -4,6 +4,42 @@
     display: flex;
 }
 
+@media (min-width: 1400px) {
+    .create-post-container {
+        width: 680px;
+    }
+
+    .post-button {
+        width: 576px;
+    }
+
+    .create-post-bottom {
+        width: 648px;
+    }
+
+    .post-item-container {
+        width: 680px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .create-post-container {
+        width: 500px;
+    }
+
+    .post-button {
+        width: 396px;
+    }
+
+    .create-post-bottom {
+        width: 468px;
+    }
+
+    .post-item-container {
+        width: 500px;
+    }
+}
+
 @media (min-width: 1100px) {
     .feed-center {
         left: 280px;
@@ -198,7 +234,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 500px;
     box-sizing: border-box;
     padding: 12px 16px 10px;
     margin-bottom: 16px;
@@ -247,7 +282,7 @@
     align-items: center;
     background-color: #3a3b3c;
 
-    width: 396px;
+
     padding: 12px 8px 12px;
 
     border: none;
@@ -263,8 +298,6 @@
 .create-post-bottom {
     display: flex;
     justify-content: space-between;
-
-    width: 468px;
 }
 
 .video-button, .photo-button, .feeling-button {
@@ -315,7 +348,7 @@ i.fa-regular.fa-face-laugh {
 
 .post-item-container {
     background-color: #242526;
-    width: 500px;
+    /* width: 500px; */
     box-sizing: border-box;
     padding: 12px 16px 10px;
     margin-bottom: 16px;
