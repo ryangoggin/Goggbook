@@ -1,3 +1,23 @@
+@media (min-width: 1400px) {
+    .comment-form-right {
+        width: 610px;
+    }
+
+    .comment-form-content {
+        width: 530px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .comment-form-right {
+        width: 430px;
+    }
+
+    .comment-form-content {
+        width: 350px;
+    }
+}
+
 .comment-form-errors {
     font-family: Arial, Helvetica, sans-serif;
     color: #b94a48;
@@ -17,7 +37,6 @@
     display: flex;
     align-items: center;
     background-color: #3a3b3c;
-    width: 430px;
     border-radius: 20px;
 }
 
@@ -35,7 +54,6 @@
     left: 8px;
     top: 8px;
 
-    width: 350px;
     height: 25px;
     background: none;
     border: none;
