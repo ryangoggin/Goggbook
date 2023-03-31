@@ -28,7 +28,7 @@ function Navigation({ isLoaded }){
     }
 
 	return (
-		<ul>
+		<ul className='nav-ul'>
 			{sessionUser && (
 				<div className='nav-container'>
 					<div className='nav-left'>

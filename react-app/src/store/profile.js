@@ -59,7 +59,20 @@ export const updateProfileBio = (user) => async (dispatch) => {
       dispatch(editProfileUser(updatedUser));
       return updatedUser;
     }
+};
+
+export const updateProfilePic = (user) => async (dispatch) => {
+  const res = await fetch(`/api/users/pfp`, {
+    method: "PUT",
+    body: user,
+  });
+
+  if (res.ok) {
+    const updatedUser = await res.json();
+    dispatch(editProfileUser(updatedUser));
+    return updatedUser;
   }
+};
 
 const initialState = { user: null, friends: null };
 
