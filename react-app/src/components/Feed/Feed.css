@@ -32,7 +32,7 @@
     height: 100vh;
 }
 
-.profile-info-container {
+.profile-info-container, .link-button-container {
     display: flex;
     align-items: center;
 
@@ -43,7 +43,7 @@
     height: 44px;
 }
 
-.profile-info-container:hover {
+.profile-info-container:hover, .link-button-container:hover {
     cursor: pointer;
     background-color: #3a3b3c;
     border-radius: 10px;
@@ -61,6 +61,40 @@
     font-weight: bold;
     font-size: 15px;
     color: white;
+}
+
+.linkedin-container, .github-container, .gogginn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.pixel-pal-logo {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.fa-brands.fa-linkedin {
+    font-size: 20px;
+    color: #0e76a8;
+}
+
+.fa-brands.fa-github {
+    font-size: 20px;
+    color: #171515;
+}
+
+.gogginn-logo {
+    height: 20px;
+    width: 20px;
 }
 
 .feed-center {
