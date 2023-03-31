@@ -1,0 +1,121 @@
+.user-info {
+    display: flex;
+
+    margin-bottom: 10px;
+}
+
+.update-pfp {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    position: relative;
+    right: 15px;
+
+    display: flex;
+    justify-content: center;
+
+    width: 500px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #38393b;
+}
+
+.post-modal-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.post-modal-fullname {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+
+    position: relative;
+    bottom: 5px;
+}
+
+.profile-pic-form-container {
+    background-color: #242526;
+
+    width: 500px;
+    height: fit-content;
+    box-sizing: border-box;
+
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.post-form {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-bottom: 15px;
+}
+
+.add-pic-label {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    margin-bottom: 5px;
+}
+
+.add-pic {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/* file upload button for chrome */
+::-webkit-file-upload-button {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    color: white;
+}
+
+::-webkit-file-upload-button:hover {
+    cursor: pointer;
+    background: #505151;
+}
+
+/* fill upload button for IE */
+::-ms-browse {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    color: white;
+}
+
+::-ms-browse:hover {
+    cursor: pointer;
+    background: #505151;
+}
+
+.post-button-modal {
+    color: #b1b1b1;
+    font-size: 14px;
+    background-color: #505151;
+
+    width: 468px;
+    height: 36px;
+
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+}
+
+.post-button-modal:hover {
+    cursor: pointer;
+}

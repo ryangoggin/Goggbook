@@ -1,5 +1,6 @@
 #modal {
   position: fixed;
+  z-index: 5;
   top: 0;
   right: 0;
   left: 0;
@@ -10,15 +11,17 @@
 }
 
 #modal-background {
-  position: fixed;
+  position: absolute;
+  z-index: 6;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(104, 104, 104, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 #modal-content {
   position: absolute;
+  z-index: 7;
   background: none;
 }

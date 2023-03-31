@@ -23,6 +23,7 @@ function App() {
 
   return (
     <>
+      {isLoaded}
       {sessionUser ? (
         <Switch>
           <Route exact path="/" >

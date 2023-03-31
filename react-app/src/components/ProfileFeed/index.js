@@ -44,7 +44,6 @@ function ProfileFeed() {
         dispatch(getProfileUser(userId));
         dispatch(getProfileFriends(userId));
         dispatch(getProfileFeed(userId));
-        // dispatch(getProfilePosts(userId));
     }, [dispatch, userId]);
 
     if (!profileFriends) return null;
@@ -213,7 +212,6 @@ function ProfileFeed() {
                             </div>
                         }
                         {profileFeedArr.length > 0 ?
-                            // console.log("profileFeedArr length", profileFeedArr.length)
                             (profileFeedArr.map((post) => {
                                 return (
                                     <div key={`profile-post${post.id}`} className='post-item-container'>

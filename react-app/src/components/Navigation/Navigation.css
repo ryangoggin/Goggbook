@@ -6,6 +6,11 @@
   display: none;
 }
 
+.nav-ul {
+  position: fixed;
+  z-index: 4;
+}
+
 .nav-container {
   position: fixed;
   z-index: 2;

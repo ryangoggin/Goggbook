@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Friend, Post
+from app.api.aws_helpers import upload_file_to_s3, get_unique_filename
 from app.forms import UserForm
 
 user_routes = Blueprint('users', __name__)
@@ -90,7 +91,7 @@ def get_all_feed_posts(id):
 @login_required
 def update_user_bio():
     '''
-    queries posts by profile user on GET requests
+    updates the current users bio
     '''
     user = User.query.get(current_user.id)
 
@@ -115,3 +116,40 @@ def update_user_bio():
 
 
 #update a user's profile picture
+@user_routes.route("/pfp", methods=['PUT'])
+@login_required
+def update_profile_pic():
+    '''
+    updates the current user's profile picture
+    '''
+    user = User.query.get(current_user.id)
+
+    if user is None:
+        return jsonify({'error': 'User not found'}), 404
+
+    form = UserForm()
+    form['csrf_token'].data = request.cookies["csrf_token"]
+
+    errors = {}
+
+    if form.validate_on_submit():
+        if form.data['profile_pic']:
+            image = form.data['profile_pic']
+
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                errors["image"] = "Error uploading image"
+                return jsonify({"errors": errors}), 400
+
+
+            user.profile_pic=upload["url"]
+
+            db.session.commit()
+            return user.to_dict()
+        # no profile_pic given in form (shouldn't be reached due to front end validation)
+        errors["profile_pic"] = "Need to select a profile pic to update with"
+        return jsonify({"errors": errors}), 400
+    return jsonify({"errors": form.errors}), 400
