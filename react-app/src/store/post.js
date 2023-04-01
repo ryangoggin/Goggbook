@@ -118,7 +118,7 @@ export const deletePost = (id) => async (dispatch) => {
 }
 
 export const createComment = (id, comment) => async (dispatch) => {
-  const resComment = await fetch(`api/posts/${id}/comment`, {
+  const resComment = await fetch(`/api/posts/${id}/comment`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(comment),
@@ -158,7 +158,7 @@ export const deleteComment = (comment) => async (dispatch) => {
 }
 
 export const createLike = (id) => async (dispatch) => {
-  const resLike = await fetch(`api/posts/${id}/like`, {
+  const resLike = await fetch(`/api/posts/${id}/like`, {
     method: "POST",
     headers: { "Content-Type": "application/json" }
   });

@@ -236,7 +236,7 @@ function Feed() {
                         <h3 className="birthdays-text">Birthdays</h3>
                     </div>
                     <div className="birthday-details">
-                        <i class="fa-solid fa-gift"></i>
+                        <i className="fa-solid fa-gift"></i>
                         {friendBirthdaysArr.length > 0 ?
                             friendBirthdaysArr.length === 1 ? (
                                     <p className="birthday-details-text">
