@@ -104,6 +104,14 @@
     background: #505151;
 }
 
+.pfp-preview {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+
+    margin: 20px 0px 20px;
+}
+
 .post-button-modal {
     color: #b1b1b1;
     font-size: 14px;
