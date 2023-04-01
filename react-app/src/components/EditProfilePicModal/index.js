@@ -10,6 +10,8 @@ function EditProfilePicModal({ sessionUser }) {
 	const dispatch = useDispatch();
     const [profilePic, setProfilePic] = useState("");
     const [errors, setErrors] = useState([]);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [preview, setPreview] = useState(null);
     const profileUser = useSelector((state) => state.profile.user);
 
 	const { closeModal } = useModal();
@@ -18,6 +20,20 @@ function EditProfilePicModal({ sessionUser }) {
         dispatch(setUser(profileUser));
         dispatch(getAllUsers());
     }, [dispatch, profileUser]);
+
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        if (!selectedFile) {
+            setPreview(null)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(selectedFile)
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [selectedFile])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -51,12 +67,21 @@ function EditProfilePicModal({ sessionUser }) {
             })
 
         setProfilePic("");
+        setPreview(null);
         setErrors([]);
     };
 
     const handleProfilePic = (e) => {
         const imageFile = e.target.files[0];
         setProfilePic(imageFile);
+
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined)
+            return
+        }
+
+        // I've kept this example simple by using the first image instead of multiple
+        setSelectedFile(e.target.files[0])
     }
 
     if (!profileUser) return null;
@@ -86,6 +111,9 @@ function EditProfilePicModal({ sessionUser }) {
                             onChange={handleProfilePic}
                         />
                     </div>
+                    {selectedFile &&
+                        (<img className="pfp-preview" src={preview} alt="pfp preview"/>)
+                    }
 					<button className= "post-button-modal" type="submit">Post</button>
 				</form>
 			</div>
