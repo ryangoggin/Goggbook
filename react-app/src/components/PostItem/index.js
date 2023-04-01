@@ -99,7 +99,7 @@ function PostItem({ post }) {
     const handleLike = async (e) => {
         e.preventDefault();
 
-        let userLike = likesObj[sessionUser.id]; //get the userLike from likesObj
+        let userLike = likesObj[sessionUser?.id]; //get the userLike from likesObj
 
         // create the like if there isn't a userLike, delete the like if there is a userLike
         if (!userLike) {
