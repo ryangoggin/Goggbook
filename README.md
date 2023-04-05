@@ -29,6 +29,12 @@ Goggbook is a full-stack clone of Facebook made with a JS (React and Redux) fron
 ### Deployment:
 ![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
 
+## Future Implementation Goals:
+* Friend Page on Profile Pages
+* User Search Bar
+* Friend Requests
+* Live DMs
+
 ## Core Features:
 ### Homepage:
 
@@ -126,8 +132,3 @@ Goggbook is a full-stack clone of Facebook made with a JS (React and Redux) fron
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/112151669/229384207-f190863a-789d-4585-a323-88e65fe40195.png">
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/112151669/229384242-87becc10-b7af-42b4-8721-67c79cadaad3.png">
 
-## Future Implementation Goals:
-* Friend Page on Profile Pages
-* User Search Bar
-* Friend Requests
-* Live DMs
