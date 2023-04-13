@@ -49,7 +49,7 @@ function CommentItem({ comment }) {
         const timeDiffMin = Math.floor(timeDiffMs / 60000);
         const timeDiffHr = Math.floor(timeDiffMin / 60);
         const timeDiffDay = Math.floor(timeDiffHr / 24);
-        const timeDiffYr = Math.floor(timeDiffHr / 365);
+        const timeDiffYr = Math.floor(timeDiffDay / 365);
 
         // Return formatted time string
         if (timeDiffYr > 0) {
