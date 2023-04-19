@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import ProfilePage from "./components/ProfilePage";
+import NotFoundPage from "./components/NotFoundPage";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -33,12 +34,7 @@ function App() {
             <ProfilePage />
           </Route>
           <Route>
-            <h1 className="page-not-found">Page Not Found</h1>
-            <button className="return-button" onClick={returnHome}>
-              <p className="return-text">
-                Return to Goggbook
-              </p>
-            </button>
+            <NotFoundPage />
           </Route>
         </Switch>
       ) : (
@@ -47,12 +43,7 @@ function App() {
             <Homepage />
           </Route>
           <Route>
-            <h1 className="page-not-found">Page Not Found</h1>
-            <button className="return-button" onClick={returnHome}>
-              <p className="return-text">
-                Return to Goggbook
-              </p>
-            </button>
+            <NotFoundPage />
           </Route>
         </Switch>
       )

@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'Klavika Bold';
+    src: url('../../static/klavika-bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Medium';
+    src: url('../../static/klavika-medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Klavika Light';
+    src: url('../../static/klavika-light.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.not-found-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #18191a;
+}
+
+.page-not-found {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color:#b0b3b8;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.not-found-image {
+    width: 112px;
+    margin-bottom: 20px;
+}
+
+.when-this-happens-container {
+    width: 452px;
+}
+
+.when-this-happens-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color:#b0b3b8;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.return-button {
+    background-color: #1877f2;
+
+    padding: 10px 40px 10px;
+
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.return-button:hover {
+    cursor: pointer;
+}
+
+.return-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    color:white;
+    margin: 0;
+}
