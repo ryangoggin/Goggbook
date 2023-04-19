@@ -19,25 +19,3 @@
     font-weight: normal;
     font-style: normal;
 }
-
-.page-not-found {
-    font-family: 'Klavika Medium';
-    color:#1877f2;
-}
-
-.return-button {
-    background: none;
-    outline: none;
-    border: none;
-}
-
-.return-button:hover {
-    cursor: pointer;
-}
-
-.return-text {
-    font-family: 'Klavika Medium';
-    font-size: 24px;
-    color:#1877f2;
-    margin: 0;
-}
