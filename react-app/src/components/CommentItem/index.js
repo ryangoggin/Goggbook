@@ -49,11 +49,14 @@ function CommentItem({ comment }) {
         const timeDiffMin = Math.floor(timeDiffMs / 60000);
         const timeDiffHr = Math.floor(timeDiffMin / 60);
         const timeDiffDay = Math.floor(timeDiffHr / 24);
+        const timeDiffMonth = Math.floor(timeDiffDay / 30);
         const timeDiffYr = Math.floor(timeDiffDay / 365);
 
         // Return formatted time string
         if (timeDiffYr > 0) {
             return `${timeDiffYr}y`;
+        } else if (timeDiffMonth > 0) {
+            return `${timeDiffMonth}mo`;
         } else if (timeDiffDay > 0) {
             return `${timeDiffDay}d`;
         } else if (timeDiffHr > 0) {
