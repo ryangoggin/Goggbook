@@ -11,6 +11,10 @@ const LoginFooter = () => {
         window.open("https://github.com/ryangoggin", "_blank");
     }
 
+    function handlePortfolio() {
+        window.open("https://ryangoggin.github.io/", "_blank");
+    }
+
     function handleGoggInn() {
         window.open("https://ryangoggin-gogginn.onrender.com/", "_blank");
     }
@@ -28,6 +32,9 @@ const LoginFooter = () => {
                 </button>
                 <button className='footer-button' onClick={handleGithub}>
                     Github
+                </button>
+                <button className='footer-button' onClick={handlePortfolio}>
+                    Portfolio
                 </button>
             </div>
             <div className='footer-middle'>
