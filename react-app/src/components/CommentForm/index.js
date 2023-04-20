@@ -16,7 +16,8 @@ function CommentForm({ post }) {
     if (sessionUser) userId = sessionUser.id
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        // e is undefined if comment sent with Enter key, check if it exists (comment sent by clicking Comment button) before running e.preventDefault()
+        if (e) e.preventDefault();
 
         let errorsObj = {};
 
@@ -41,6 +42,13 @@ function CommentForm({ post }) {
         setErrors([]);
     };
 
+    const enterKey = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSubmit();
+        }
+    }
+
 	return (
 		<>
             <ul className={errors.length > 0 ? "comment-form-errors" : "hidden"}>
@@ -60,6 +68,7 @@ function CommentForm({ post }) {
                             type="text"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
+                            onKeyPress={enterKey}
                             placeholder={`Write a comment...`}
                             required
                         />
