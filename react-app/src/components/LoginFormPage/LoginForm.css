@@ -113,6 +113,7 @@
 
 .login-button:hover {
     cursor: pointer;
+    background-color: #1463ca;
 }
 
 .signup-button {
