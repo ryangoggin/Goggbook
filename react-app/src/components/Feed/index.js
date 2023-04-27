@@ -71,7 +71,7 @@ function Feed() {
     }
 
     function handlePixelPal() {
-        window.open("https://pixelpal.onrender.com/", "_blank");
+        window.open("https://pixel-pal.onrender.com/", "_blank");
     }
 
     const closeMenu = () => setShowMenu(false);
