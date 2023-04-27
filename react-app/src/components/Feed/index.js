@@ -43,15 +43,15 @@ function Feed() {
         dispatch(getFriends());
     }, [dispatch]);
 
-    const handleLiveVideo = (e) => {
-        e.preventDefault();
-        window.alert('Live video Feature Coming Soon...');
-    }
+    // const handleLiveVideo = (e) => {
+    //     e.preventDefault();
+    //     window.alert('Live video Feature Coming Soon...');
+    // }
 
-    const handleFeelingActivity = (e) => {
-        e.preventDefault();
-        window.alert('Feeling/activity Feature Coming Soon...');
-    }
+    // const handleFeelingActivity = (e) => {
+    //     e.preventDefault();
+    //     window.alert('Feeling/activity Feature Coming Soon...');
+    // }
 
     const handleCurrProfileClick = (e) => {
         e.preventDefault();
@@ -202,7 +202,7 @@ function Feed() {
                             />
                         </div>
                         <div className="create-post-bottom">
-                            <button className="video-button" onClick={handleLiveVideo}>{<>
+                            <button className="video-button">{<>
                                 <i className="fa-solid fa-video"></i>
                                 <p className="video-text">Live video</p>
                                 </>}
@@ -216,7 +216,7 @@ function Feed() {
                                 onItemClick={closeMenu}
                                 modalComponent={<PostFormModal />}
                             />
-                            <button className="feeling-button" onClick={handleFeelingActivity}>{<>
+                            <button className="feeling-button">{<>
                                 <i className="fa-regular fa-face-laugh"></i>
                                 <p className="feeling-text">Feeling/activity</p>
                                 </>}
