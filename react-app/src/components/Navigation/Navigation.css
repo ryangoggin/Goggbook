@@ -104,7 +104,7 @@
 }
 
 .nav-button:hover {
-  cursor: pointer;
+  cursor: not-allowed;
   background: #3a3b3c;
   box-sizing: border-box;
   border: solid 3px #242526;

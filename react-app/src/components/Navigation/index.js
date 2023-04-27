@@ -7,25 +7,25 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
-	const handleWatch = (e) => {
-        e.preventDefault();
-        window.alert('Watch Feature not available yet...');
-    }
+	// const handleWatch = (e) => {
+    //     e.preventDefault();
+    //     window.alert('Watch Feature not available yet...');
+    // }
 
-	const handleMarketplace = (e) => {
-        e.preventDefault();
-        window.alert('Marketplace Feature not available yet...');
-    }
+	// const handleMarketplace = (e) => {
+    //     e.preventDefault();
+    //     window.alert('Marketplace Feature not available yet...');
+    // }
 
-	const handleGroups = (e) => {
-        e.preventDefault();
-        window.alert('Groups Feature not available yet...');
-    }
+	// const handleGroups = (e) => {
+    //     e.preventDefault();
+    //     window.alert('Groups Feature not available yet...');
+    // }
 
-	const handleGaming = (e) => {
-        e.preventDefault();
-        window.alert('Gaming Feature not available yet...');
-    }
+	// const handleGaming = (e) => {
+    //     e.preventDefault();
+    //     window.alert('Gaming Feature not available yet...');
+    // }
 
 	return (
 		<ul className='nav-ul'>
@@ -40,16 +40,16 @@ function Navigation({ isLoaded }){
 						<NavLink className="nav-home" activeClassName="active-home" exact to="/">
 							<i className="fa-solid fa-house"></i>
 						</NavLink>
-						<button className='nav-button' onClick={handleWatch}>
+						<button className='nav-button'>
 							<i className="fa-regular fa-circle-play"></i>
 						</button>
-						<button className='nav-button' onClick={handleMarketplace}>
+						<button className='nav-button'>
 							<i className="fa-solid fa-shop"></i>
 						</button>
-						<button className='nav-button' onClick={handleGroups}>
+						<button className='nav-button'>
 							<i className="fa-solid fa-users"></i>
 						</button>
-						<button className='nav-button' onClick={handleGaming}>
+						<button className='nav-button'>
 							<i className="fa-solid fa-gamepad"></i>
 						</button>
 					</div>
