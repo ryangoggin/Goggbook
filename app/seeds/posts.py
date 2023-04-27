@@ -9,53 +9,53 @@ def seed_posts():
     Post(
         user_id=1,
         content="Hello Goggbook! This is my first post, looking forward to connecting with and talking with my friends!",
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,21),
+        updated_at=date(2023,4,21)
     ),
     Post(
         user_id=6,
         content="Working on two new features for y'all get ready for them next week!",
         post_pic='https://goggbook-aws.s3.amazonaws.com/code-post-pic.jpg',
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,15),
+        updated_at=date(2023,4,15)
     ),
     Post(
         user_id=2,
         content="Look at my cat!",
         post_pic='https://goggbook-aws.s3.amazonaws.com/cat-post-pic.jpg',
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,10),
+        updated_at=date(2023,4,10)
     ),
     Post(
         user_id=3,
         content="Went to the beach last weekend, look at how pretty this sunset was",
         post_pic='https://goggbook-aws.s3.amazonaws.com/sunset-post-pic.jpg',
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,4),
+        updated_at=date(2023,4,4)
     ),
     Post(
         user_id=4,
         content="Does anyone know if the practice assessment's been posted yet?",
-        created_at=date(2023,3,20),
-        updated_at=date(2023,3,20)
+        created_at=date(2023,4,2),
+        updated_at=date(2023,4,2)
     ),
     Post(
         user_id=5,
         content="So excited to be graduating from App Academy in April!",
-        created_at=date(2023,3,19),
-        updated_at=date(2023,3,19)
+        created_at=date(2023,3,28),
+        updated_at=date(2023,3,28)
     ),
     Post(
         user_id=6,
         content="Anyone have fun plans for the weekend?",
-        created_at=date(2023,3,17),
-        updated_at=date(2023,3,17)
+        created_at=date(2023,3,22),
+        updated_at=date(2023,3,22)
     ),
     Post(
         user_id=7,
         content="LMS for a truth is",
-        created_at=date(2023,3,16),
-        updated_at=date(2023,3,16)
+        created_at=date(2023,3,20),
+        updated_at=date(2023,3,20)
     ),
     Post(
         user_id=6,
