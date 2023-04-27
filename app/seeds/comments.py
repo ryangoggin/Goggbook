@@ -10,71 +10,71 @@ def seed_comments():
         user_id=6,
         post_id=1,
         content="Hey Demo! Long time no see, how are you?",
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,21),
+        updated_at=date(2023,4,21)
     ),
     Comment(
         user_id=4,
         post_id=2,
         content="Cool! Looking forward to them.",
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,15),
+        updated_at=date(2023,4,15)
     ),
     Comment(
         user_id=7,
         post_id=2,
         content="Nice",
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,15),
+        updated_at=date(2023,4,15)
     ),
     Comment(
         user_id=3,
         post_id=3,
         content="That is a very cool cat, thanks for sharing.",
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,10),
+        updated_at=date(2023,4,10)
     ),
     Comment(
         user_id=2,
         post_id=4,
         content="Sunsets are the best.",
-        created_at=date(2023,3,21),
-        updated_at=date(2023,3,21)
+        created_at=date(2023,4,4),
+        updated_at=date(2023,4,4)
     ),
     Comment(
         user_id=5,
         post_id=5,
         content="I don't think they've posted it yet.",
-        created_at=date(2023,3,20),
-        updated_at=date(2023,3,20)
+        created_at=date(2023,4,2),
+        updated_at=date(2023,4,2)
     ),
     Comment(
         user_id=4,
         post_id=6,
         content="Me too!",
-        created_at=date(2023,3,19),
-        updated_at=date(2023,3,19)
+        created_at=date(2023,3,28),
+        updated_at=date(2023,3,28)
     ),
     Comment(
         user_id=5,
         post_id=7,
         content="Going on a weekend trip!",
-        created_at=date(2023,3,17),
-        updated_at=date(2023,3,17)
+        created_at=date(2023,3,22),
+        updated_at=date(2023,3,22)
     ),
     Comment(
         user_id=7,
         post_id=7,
         content="Definitely gonna be catching up on sleep after that PixelPal project.",
-        created_at=date(2023,3,17),
-        updated_at=date(2023,3,17)
+        created_at=date(2023,3,22),
+        updated_at=date(2023,3,22)
     ),
     Comment(
         user_id=6,
         post_id=8,
         content="An LMS in 2023? Wild.",
-        created_at=date(2023,3,16),
-        updated_at=date(2023,3,16)
+        created_at=date(2023,3,20),
+        updated_at=date(2023,3,20)
     )
     ]
 
