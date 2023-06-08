@@ -22,8 +22,14 @@ class Request(db.Model):
             'receiverUser': self.receiver_user.to_dict()
         }
 
-    def to_sender_username(self):
-        return self.sender_user.username
+    def to_sender_name(self):
+        return {
+            'first_name': self.sender_user.first_name,
+            'last_name': self.sender_user.last_name
+        }
 
-    def to_receiver_username(self):
-        return self.receiver_user.username
+    def to_receiver_name(self):
+        return {
+            'first_name': self.receiver_user.first_name,
+            'last_name': self.receiver_user.last_name
+        }
