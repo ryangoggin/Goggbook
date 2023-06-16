@@ -7,37 +7,43 @@ def seed_posts():
 
     posts = [
     Post(
+    user_id=6,
+    content="Starting to get interviews, exciting stuff :)",
+    created_at=date(2023,6,5),
+    updated_at=date(2023,6,5)
+    ),
+    Post(
         user_id=1,
         content="Hello Goggbook! This is my first post, looking forward to connecting with and talking with my friends!",
-        created_at=date(2023,4,21),
-        updated_at=date(2023,4,21)
+        created_at=date(2023,5,21),
+        updated_at=date(2023,5,21)
     ),
     Post(
         user_id=6,
         content="Working on two new features for y'all get ready for them next week!",
         post_pic='https://goggbook-aws.s3.amazonaws.com/code-post-pic.jpg',
-        created_at=date(2023,4,15),
-        updated_at=date(2023,4,15)
+        created_at=date(2023,5,15),
+        updated_at=date(2023,5,15)
     ),
     Post(
         user_id=2,
         content="Look at my cat!",
         post_pic='https://goggbook-aws.s3.amazonaws.com/cat-post-pic.jpg',
-        created_at=date(2023,4,10),
-        updated_at=date(2023,4,10)
+        created_at=date(2023,5,10),
+        updated_at=date(2023,5,10)
     ),
     Post(
         user_id=3,
         content="Went to the beach last weekend, look at how pretty this sunset was",
         post_pic='https://goggbook-aws.s3.amazonaws.com/sunset-post-pic.jpg',
-        created_at=date(2023,4,4),
-        updated_at=date(2023,4,4)
+        created_at=date(2023,4,24),
+        updated_at=date(2023,4,24)
     ),
     Post(
         user_id=4,
         content="Does anyone know if the practice assessment's been posted yet?",
-        created_at=date(2023,4,2),
-        updated_at=date(2023,4,2)
+        created_at=date(2023,4,13),
+        updated_at=date(2023,4,13)
     ),
     Post(
         user_id=5,
