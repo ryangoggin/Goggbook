@@ -33,7 +33,7 @@ function Navigation({ isLoaded }){
 				<div className='nav-container'>
 					<div className='nav-left'>
 						<NavLink className={"navlink-home"} exact to="/">
-							<img className='logo' src="https://goggbook-aws.s3.amazonaws.com/favicon.jpg" alt="goggbook-logo" />
+							<img className='logo' src="https://goggbook-aws-2.s3.amazonaws.com/favicon.jpg" alt="goggbook-logo" />
 						</NavLink>
 					</div>
 					<div className='nav-center'>

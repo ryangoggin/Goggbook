@@ -176,14 +176,14 @@ function Feed() {
                     <div className="link-button-container">
                         <button className="user-profile-button" onClick={handleGoggInn}>
                             <div className="gogginn-container">
-                                <img className="gogginn-logo" src="https://goggbook-aws.s3.amazonaws.com/mug-hot-solid.png" alt="GoggInn Logo" />
+                                <img className="gogginn-logo" src="https://goggbook-aws-2.s3.amazonaws.com/mug-hot-solid.png" alt="GoggInn Logo" />
                             </div>
                             <p className="profile-fullname">GoggInn</p>
                         </button>
                     </div>
                     <div className="link-button-container">
                         <button className="user-profile-button" onClick={handlePixelPal}>
-                            <img className="pixel-pal-logo" src="https://goggbook-aws.s3.amazonaws.com/pixel-pal-logo.png" alt="PixelPal Logo" />
+                            <img className="pixel-pal-logo" src="https://goggbook-aws-2.s3.amazonaws.com/pixel-pal-logo.png" alt="PixelPal Logo" />
                             <p className="profile-fullname">PixelPal</p>
                         </button>
                     </div>
