@@ -13,7 +13,7 @@ function NotFoundPage() {
     return (
         <>
             <div className='not-found-container'>
-                <img className='not-found-image' src="https://goggbook-aws.s3.amazonaws.com/facebook-404.svg" alt="not found" />
+                <img className='not-found-image' src="https://goggbook-aws-2.s3.amazonaws.com/facebook-404.svg" alt="not found" />
                 <h3 className="page-not-found">Page Not Found</h3>
                 <div className='when-this-happens-container'>
                     <p className='when-this-happens-text'>

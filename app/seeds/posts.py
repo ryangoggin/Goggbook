@@ -21,21 +21,21 @@ def seed_posts():
     Post(
         user_id=6,
         content="Working on two new features for y'all get ready for them next week!",
-        post_pic='https://goggbook-aws.s3.amazonaws.com/code-post-pic.jpg',
+        post_pic='https://goggbook-aws-2.s3.amazonaws.com/code-post-pic.jpg',
         created_at=date(2023,5,15),
         updated_at=date(2023,5,15)
     ),
     Post(
         user_id=2,
         content="Look at my cat!",
-        post_pic='https://goggbook-aws.s3.amazonaws.com/cat-post-pic.jpg',
+        post_pic='https://goggbook-aws-2.s3.amazonaws.com/cat-post-pic.jpg',
         created_at=date(2023,5,10),
         updated_at=date(2023,5,10)
     ),
     Post(
         user_id=3,
         content="Went to the beach last weekend, look at how pretty this sunset was",
-        post_pic='https://goggbook-aws.s3.amazonaws.com/sunset-post-pic.jpg',
+        post_pic='https://goggbook-aws-2.s3.amazonaws.com/sunset-post-pic.jpg',
         created_at=date(2023,4,24),
         updated_at=date(2023,4,24)
     ),
